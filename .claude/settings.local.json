@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(zsh -lic 'wrangler pages deploy --help')",
+      "Bash(zsh -lic 'wrangler pages secret put --help')"
+    ]
+  }
+}

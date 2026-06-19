@@ -1,0 +1,14 @@
+# Cloudflare Pages configuration for the Herrera Contractors site.
+name = "herrera-contractors"
+compatibility_date = "2026-06-18"
+pages_build_output_dir = "."
+
+# Non-secret settings, safe to keep in the repo.
+# Email is sent through Google Workspace SMTP (see functions/api/estimate.js).
+# The two SECRETS are NOT here — they are stored encrypted via:
+#   wrangler pages secret put SMTP_PASSWORD --project-name=herrera-contractors
+#   wrangler pages secret put TURNSTILE_SECRET_KEY --project-name=herrera-contractors
+[vars]
+LEAD_TO = "info@hdesignconstruction.com"
+LEAD_FROM = "info@hdesignconstruction.com"
+SMTP_USER = "info@hdesignconstruction.com"

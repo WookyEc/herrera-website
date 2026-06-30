@@ -174,6 +174,23 @@ p { margin: 0; }
   .topbar .tb-right { flex-direction: column; align-items: center; gap: 3px; width: 100%; }
   .topbar .tb-right { order: 1; }  /* 1) company tagline  2) license line */
   .topbar .tb-left  { order: 2; }  /* 3) phone number */
+  /* Bigger tagline with a short line on each side, spanning full width */
+  .topbar .tb-co {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    font-size: 1rem;
+  }
+  .topbar .tb-co::before,
+  .topbar .tb-co::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.28);
+  }
+  /* Drop the phone icon on phones; show just the number */
+  .topbar .tb-left svg { display: none; }
 }
 
 /* =========================================================
@@ -563,7 +580,7 @@ p { margin: 0; }
 @media (max-width: 560px){
   /* Phones: label on its own line, badges in an even 3-per-row grid (2 rows of 3) */
   .accred .wrap { flex-direction: column; align-items: center; gap: 14px; text-align: center; }
-  .accred-label { flex: none; align-self: stretch; text-align: left; font-size: 0.85rem; }
+  .accred-label { flex: none; align-self: stretch; text-align: left; font-size: 0.85rem; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
   .accred-list {
     flex: none;
     width: 100%;

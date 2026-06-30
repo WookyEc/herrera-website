@@ -158,6 +158,23 @@ p { margin: 0; }
 .topbar .tb-tag { color: var(--orange); font-weight: 600; }
 .topbar .tb-phone { white-space: nowrap; }
 @media (max-width: 860px){ .topbar .tb-left .hide-sm { display:none; } }
+/* Phones: stack the top bar vertically — company, then license, then phone —
+   with breathing room and no clipping. Desktop layout is untouched. */
+@media (max-width: 600px){
+  .topbar .wrap {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    gap: 3px;
+    padding: 9px 12px;
+    text-align: center;
+  }
+  .topbar .tb-left,
+  .topbar .tb-right { flex-direction: column; align-items: center; gap: 3px; width: 100%; }
+  .topbar .tb-right { order: 1; }  /* 1) company tagline  2) license line */
+  .topbar .tb-left  { order: 2; }  /* 3) phone number */
+}
 
 /* =========================================================
    HEADER / NAV

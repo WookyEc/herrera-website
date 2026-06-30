@@ -590,7 +590,7 @@ p { margin: 0; }
 @media (max-width: 560px){
   /* Phones: label on its own line, badges in an even 3-per-row grid (2 rows of 3) */
   .accred .wrap { flex-direction: column; align-items: center; gap: 14px; text-align: center; }
-  .accred-label { flex: none; align-self: stretch; text-align: left; font-size: 0.85rem; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+  .accred-label { flex: none; align-self: stretch; text-align: left; font-size: 0.85rem; }
   .accred-list {
     flex: none;
     width: 100%;

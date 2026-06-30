@@ -151,10 +151,12 @@ p { margin: 0; }
 .topbar a { color: rgba(255,255,255,0.78); }
 .topbar a:hover { color: #fff; }
 .topbar .tb-left { display: flex; gap: 26px; align-items: center; }
-.topbar .tb-right { display: flex; gap: 18px; align-items: center; }
+.topbar .tb-right { display: flex; flex-direction: column; gap: 1px; align-items: flex-end; line-height: 1.25; }
 .topbar .tb-item { display: inline-flex; gap: 8px; align-items: center; }
 .topbar svg { width: 15px; height: 15px; opacity: .8; }
+.topbar .tb-co { color: rgba(255,255,255,0.92); font-weight: 600; }
 .topbar .tb-tag { color: var(--orange); font-weight: 600; }
+.topbar .tb-phone { white-space: nowrap; }
 @media (max-width: 860px){ .topbar .tb-left .hide-sm { display:none; } }
 
 /* =========================================================

@@ -601,7 +601,7 @@ p { margin: 0; }
     gap: 18px 12px;
   }
   .ab .ab-logo { height: 34px; }
-  /* Dot separators between badges within each row (4 dots total) */
+  /* Short vertical line separators between badges within each row (4 total) */
   .accred-list .ab { position: relative; width: 100%; }
   .accred-list .ab:not(:nth-child(3n))::after {
     content: "";
@@ -609,9 +609,8 @@ p { margin: 0; }
     left: 100%;
     top: 50%;
     transform: translate(calc(6px - 50%), -50%);  /* centered in the 12px column gap */
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
+    width: 1px;
+    height: 22px;
     background: var(--muted);
   }
 }

@@ -191,6 +191,16 @@ p { margin: 0; }
   }
   /* Drop the phone icon on phones; show just the number */
   .topbar .tb-left svg { display: none; }
+  /* Short line before and after the phone number */
+  .topbar .tb-left .tb-item { gap: 10px; }
+  .topbar .tb-left .tb-item::before,
+  .topbar .tb-left .tb-item::after {
+    content: "";
+    flex: none;
+    width: 22px;
+    height: 1px;
+    background: rgba(255,255,255,0.28);
+  }
 }
 
 /* =========================================================

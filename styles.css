@@ -610,8 +610,8 @@ p { margin: 0; }
     top: 50%;
     transform: translate(calc(6px - 50%), -50%);  /* centered in the 12px column gap */
     width: 1px;
-    height: 22px;
-    background: var(--muted);
+    height: 18px;
+    background: var(--line);
   }
 }
 

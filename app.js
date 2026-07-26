@@ -187,83 +187,56 @@
   wireForm("heroForm", "heroSuccess");
   wireForm("contactForm", "contactSuccess");
 
-  /* ---- before / after sliders (works for every .ba-slider) ---- */
-  function wireBaSlider(slider) {
-    var dragging = false;
-    function set(clientX) {
-      var rect = slider.getBoundingClientRect();
-      var pct = ((clientX - rect.left) / rect.width) * 100;
-      pct = Math.max(0, Math.min(100, pct));
-      slider.style.setProperty("--pos", pct + "%");
-      slider.setAttribute("aria-valuenow", Math.round(pct));
+  /* ---- featured project video (Cloudflare Stream) ---- */
+  var fpStage = document.getElementById("fpStage");
+  var fpPoster = document.getElementById("fpPoster");
+  var fpPlay = document.getElementById("fpPlay");
+  if (fpStage && fpPoster && fpPlay) {
+    var STREAM_SRC =
+      "https://customer-7y20e6equf1uyb61.cloudflarestream.com/7adbc9a9c1c5ac5b528228216861201c/iframe?autoplay=true";
+    var player = null;
+
+    function closeVideo() {
+      if (!player) return;
+      fpStage.removeChild(player); // removing the iframe is what stops playback
+      player = null;
+      fpStage.classList.remove("is-playing");
+      fpPlay.focus();
     }
-    slider.addEventListener("pointerdown", function (e) {
-      // ignore drags on non-active carousel items (they navigate instead)
-      var item = slider.closest(".bac-item");
-      if (item && !item.classList.contains("is-active")) return;
-      dragging = true;
-      slider.setPointerCapture(e.pointerId);
-      set(e.clientX);
-    });
-    slider.addEventListener("pointermove", function (e) {
-      if (dragging) set(e.clientX);
-    });
-    function stop() { dragging = false; }
-    slider.addEventListener("pointerup", stop);
-    slider.addEventListener("pointercancel", stop);
-    slider.addEventListener("keydown", function (e) {
-      var cur = parseFloat(slider.getAttribute("aria-valuenow")) || 50;
-      if (e.key === "ArrowLeft") { cur = Math.max(0, cur - 4); }
-      else if (e.key === "ArrowRight") { cur = Math.min(100, cur + 4); }
-      else return;
-      e.preventDefault();
-      slider.style.setProperty("--pos", cur + "%");
-      slider.setAttribute("aria-valuenow", Math.round(cur));
-    });
-  }
-  document.querySelectorAll(".ba-slider").forEach(wireBaSlider);
 
-  /* ---- before/after coverflow carousel ---- */
-  var bac = document.getElementById("baCarousel");
-  if (bac) {
-    var items = Array.prototype.slice.call(bac.querySelectorAll(".bac-item"));
-    var dotsWrap = document.getElementById("bacDots");
-    var n = items.length;
-    var active = 0;
+    function openVideo() {
+      if (player) return;
+      player = document.createElement("div");
+      player.className = "fp-player";
 
-    // build dots
-    items.forEach(function (_, i) {
-      var b = document.createElement("button");
-      b.setAttribute("aria-label", "Show comparison " + (i + 1));
-      b.addEventListener("click", function () { go(i); });
-      dotsWrap.appendChild(b);
-    });
-    var dots = Array.prototype.slice.call(dotsWrap.children);
+      var frame = document.createElement("iframe");
+      frame.src = STREAM_SRC;
+      frame.title = "Longwood porch conversion walkthrough";
+      frame.setAttribute(
+        "allow",
+        "accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+      );
+      frame.setAttribute("allowfullscreen", "true");
 
-    function render() {
-      items.forEach(function (item, i) {
-        item.classList.remove("is-active", "is-prev", "is-next", "is-hidden");
-        if (i === active) item.classList.add("is-active");
-        else if (i === (active - 1 + n) % n) item.classList.add("is-prev");
-        else if (i === (active + 1) % n) item.classList.add("is-next");
-        else item.classList.add("is-hidden");
-      });
-      dots.forEach(function (d, i) { d.classList.toggle("active", i === active); });
+      var close = document.createElement("button");
+      close.type = "button";
+      close.className = "fp-close";
+      close.setAttribute("aria-label", "Close video and return to the project photo");
+      close.innerHTML =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
+      close.addEventListener("click", closeVideo);
+
+      player.appendChild(frame);
+      player.appendChild(close);
+      fpStage.appendChild(player);
+      fpStage.classList.add("is-playing");
+      close.focus();
     }
-    function go(i) { active = (i + n) % n; render(); }
 
-    document.getElementById("bacPrev").addEventListener("click", function () { go(active - 1); });
-    document.getElementById("bacNext").addEventListener("click", function () { go(active + 1); });
-
-    // clicking a side item brings it to center
-    items.forEach(function (item, i) {
-      item.addEventListener("click", function () {
-        if (item.classList.contains("is-prev")) go(active - 1);
-        else if (item.classList.contains("is-next")) go(active + 1);
-      });
+    fpPlay.addEventListener("click", openVideo);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeVideo();
     });
-
-    render();
   }
 
   /* ---- "How It Works" sequential animation ---- */

@@ -27,6 +27,81 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+
+<style>
+/* =========================================================
+   OUR WORK — portfolio mosaic
+   Built on the existing tokens in styles.css. No new global
+   custom properties; --span / --h are set per tile inline.
+   ========================================================= */
+.work-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 40px; margin-bottom: 44px;
+}
+.work-intro { max-width: 640px; }
+.work-intro h2 { font-size: clamp(1.9rem, 3.8vw, 3.05rem); margin-top: 16px; color: var(--navy); }
+.work-intro p { margin-top: 18px; font-size: clamp(1.02rem, 1.6vw, 1.2rem); color: var(--body); max-width: 36ch; }
+
+.work-card {
+  flex-shrink: 0;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 18px; padding: 28px 40px; text-align: center;
+}
+.work-card b {
+  font-family: var(--head); font-weight: 600; text-transform: uppercase;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem); line-height: 1.1;
+  letter-spacing: 0.01em; color: var(--navy);
+}
+@keyframes workSoftBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+/* the bounce lives on the wrapper so the button keeps its own .btn hover
+   lift + glow — the two transforms compose instead of cancelling */
+.work-bounce { display: inline-flex; animation: workSoftBounce 2.8s cubic-bezier(.22,1,.36,1) infinite; }
+
+/* ---- the 12-column mosaic ---- */
+.work-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+.work-tile {
+  grid-column: span var(--span, 4);
+  height: var(--h, 300px);
+  margin: 0;                        /* figure carries a UA margin of 1em 40px — kill it */
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  background: var(--navy);          /* placeholder fill until a photo lands */
+  box-shadow: var(--shadow-sm);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+/* same lift as the site's .svc cards */
+.work-tile:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+/* same photo zoom as the site's .proj tiles */
+.work-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.work-tile:hover img { transform: scale(1.04); }
+
+.work-cta { text-align: center; margin-top: 44px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .work-bounce { animation: none; }
+  .work-tile, .work-tile img { transition: none; }
+}
+
+/* ---- responsive: the design is desktop-only, so this is ours ---- */
+@media (max-width: 1023px) {
+  .work-grid { grid-template-columns: repeat(2, 1fr); }
+  .work-tile { grid-column: span 1; height: auto; aspect-ratio: 4 / 3; }
+}
+@media (max-width: 900px) {
+  .work-head { flex-direction: column; align-items: flex-start; gap: 28px; }
+  .work-card { width: 100%; padding: 26px 24px; }
+  .work-intro p { max-width: none; }
+}
+@media (max-width: 600px) {
+  .work-grid { grid-template-columns: 1fr; }
+  .work-tile { aspect-ratio: 3 / 2; }
+}
+</style>
 </head>
 <body>
 
@@ -428,32 +503,58 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ============ PROJECT GALLERY ============ -->
+<!-- ============ OUR WORK ============ -->
 <section class="section projects-more" id="more-projects">
   <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="eyebrow" style="justify-content:center;">Our Work</span>
-      <h2>More Projects Across Central Florida</h2>
-      <p>A look at the kitchens, roofs and homes we've built and remodeled for neighbors throughout the Orlando area.</p>
+
+    <div class="work-head reveal">
+      <div class="work-intro">
+        <span class="eyebrow">Our Work</span>
+        <h2>Every house on this page<br />is a neighbor's.</h2>
+        <p>Kitchens, bathrooms, additions and ADUs, siding, roofs and ground-up builds.</p>
+      </div>
+      <div class="work-card">
+        <b>Yours could be next.</b>
+        <span class="work-bounce">
+          <a class="btn btn-primary btn-lg" href="#contact">Get A Free Estimate</a>
+        </span>
+      </div>
     </div>
 
-    <div class="filters reveal" id="filters">
-      <button class="active" data-filter="all">All Work</button>
-      <button data-filter="remodel">Remodeling</button>
-      <button data-filter="roofing">Roofing</button>
-      <button data-filter="newbuild">New Construction</button>
+    <!--
+      PHOTO DROP-IN — tiles a7–a9 are empty navy placeholders. To fill one,
+      paste a single <img> inside its <figure> and write a truthful alt:
+        <img src="images/<file>.jpeg" alt="…" />
+      The tile keeps its span and height; the navy simply stops showing.
+    -->
+    <div class="work-grid">
+      <figure class="work-tile reveal" data-slot="a1" style="--span:7; --h:400px">
+        <img src="images/winter-park-kitchen.jpeg" alt="Winter Park kitchen remodel — wood cabinetry and waterfall island" />
+      </figure>
+      <figure class="work-tile reveal d1" data-slot="a2" style="--span:5; --h:400px">
+        <img src="images/lake-nona-reroof.jpeg" alt="Aerial view of the Herrera crew installing a new shingle roof in Lake Nona" />
+      </figure>
+      <figure class="work-tile reveal" data-slot="a3" style="--span:4; --h:270px">
+        <img src="images/oviedo-custom-home.jpeg" alt="Oviedo custom home build with new porch and roof" />
+      </figure>
+      <figure class="work-tile reveal d1" data-slot="a4" style="--span:4; --h:270px">
+        <img src="images/longwood-bathroom.jpeg" alt="Longwood bathroom remodel with freestanding tub, walk-in shower, and marble tile" />
+      </figure>
+      <figure class="work-tile reveal d2" data-slot="a5" style="--span:4; --h:270px">
+        <img src="images/apopka-metal-roof.jpeg" alt="Apopka standing-seam metal roof on a two-story home" />
+      </figure>
+      <figure class="work-tile reveal" data-slot="a6" style="--span:5; --h:360px">
+        <img src="images/new-construction-lakefront.jpeg" alt="Lakefront new-construction home under framing with Herrera Contractors truck on site" />
+      </figure>
+      <figure class="work-tile reveal d1" data-slot="a7" style="--span:7; --h:360px"></figure>
+      <figure class="work-tile reveal" data-slot="a8" style="--span:8; --h:320px"></figure>
+      <figure class="work-tile reveal d1" data-slot="a9" style="--span:4; --h:320px"></figure>
     </div>
-    <div class="gallery" id="gallery">
-      <div class="proj reveal" data-cat="remodel"><img class="proj-img" src="images/winter-park-kitchen.jpeg" alt="Winter Park kitchen remodel — wood cabinetry and waterfall island" /><div class="ov"><span class="tag">Remodel</span><b>Winter Park</b><span>Kitchen Remodel</span></div></div>
-      <div class="proj reveal d1" data-cat="roofing"><img class="proj-img" style="--zoom:1.2;" src="images/lake-nona-reroof.jpeg" alt="Aerial view of the Herrera crew installing a new shingle roof in Lake Nona" /><div class="ov"><span class="tag">Roofing</span><b>Lake Nona</b><span>Metal Roof</span></div></div>
-      <div class="proj reveal d2" data-cat="newbuild"><img class="proj-img" src="images/oviedo-custom-home.jpeg" alt="Oviedo custom home build with new porch and roof" /><div class="ov"><span class="tag">New Build</span><b>Sanford</b><span>Full Rehab</span></div></div>
-      <div class="proj reveal" data-cat="newbuild"><img class="proj-img" src="images/new-construction-lakefront.jpeg" alt="Lakefront new-construction home under framing with Herrera Contractors truck on site" /><div class="ov"><span class="tag">New Build</span><b>Lakefront New Build</b><span>New Construction</span></div></div>
-      <div class="proj reveal d1" data-cat="remodel"><img class="proj-img" src="images/longwood-bathroom.jpeg" alt="Longwood bathroom remodel with freestanding tub, walk-in shower, and marble tile" /><div class="ov"><span class="tag">Remodel</span><b>Longwood</b><span>Bathroom Remodel</span></div></div>
-      <div class="proj reveal d2" data-cat="roofing"><img class="proj-img" src="images/apopka-metal-roof.jpeg" alt="Apopka standing-seam metal roof on a two-story home" /><div class="ov"><span class="tag">Roofing</span><b>Apopka</b><span>Metal Roof</span></div></div>
-    </div>
-    <div class="gallery-cta reveal">
+
+    <div class="work-cta reveal">
       <a class="btn btn-ghost btn-lg" href="gallery.html">See More Projects</a>
     </div>
+
   </div>
 </section>
 

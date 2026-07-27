@@ -64,19 +64,8 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
 .gal-head p { margin-top: 18px; font-size: clamp(1.05rem, 2vw, 1.28rem); color: var(--body); max-width: 46ch; }
 .gal-rule { border: 0; border-top: 1px solid var(--line); margin: clamp(28px, 4vw, 42px) 0 0; }
 
-/* ---------- filter pills (own IDs so app.js's #filters handler stays out) ---------- */
-.gal-filters { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 34px; }
-.gal-filters button {
-  font-family: var(--head); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500;
-  font-size: 0.92rem; padding: 10px 20px; border-radius: 999px; cursor: pointer;
-  background: var(--white); border: 1.5px solid var(--line); color: var(--ink);
-  transition: all .18s ease;
-}
-.gal-filters button:hover { border-color: var(--navy); }
-.gal-filters button.active { background: var(--navy); color: #fff; border-color: var(--navy); }
-
 /* ---------- masonry: staggered 4-column flow ---------- */
-.gal-grid { column-count: 4; column-gap: 16px; }
+.gal-grid { column-count: 4; column-gap: 16px; margin-top: 34px; }
 .gal-tile {
   break-inside: avoid;
   margin: 0 0 16px;
@@ -230,57 +219,87 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
     </div>
     <hr class="gal-rule" />
 
-    <div class="gal-filters" id="galFilters">
-      <button type="button" class="active" data-filter="all">All Work</button>
-      <button type="button" data-filter="kitchen">Kitchens</button>
-      <button type="button" data-filter="bath">Bathrooms</button>
-      <button type="button" data-filter="addition">Additions &amp; ADUs</button>
-      <button type="button" data-filter="siding">Siding</button>
-      <button type="button" data-filter="roof">Roofs</button>
-      <button type="button" data-filter="build">Ground-Up Builds</button>
-    </div>
-
     <!--
-      PHOTO DROP-IN
-      Every tile below is an empty navy placeholder. To fill one, paste a single
-      <img> inside its <figure>, keeping the class and writing a real alt:
-
-        <img class="gal-img"
-             src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/<IMAGE_ID>/public"
-             alt="Winter Park kitchen remodel — white shaker cabinets and quartz island" />
-
-      Nothing else needs to change: the tile keeps its height, the navy simply
-      stops showing once the photo covers it.
+      data-cat is kept on every tile purely as metadata for a possible future
+      filter UI. Nothing reads it today.
     -->
     <div class="gal-grid" id="galGrid">
 
       <!-- ---- batch 1: visible on load ---- -->
-      <figure class="gal-tile" data-cat="kitchen"  data-slot="g1"  style="--gal-h:340px"></figure>
-      <figure class="gal-tile" data-cat="bath"     data-slot="g2"  style="--gal-h:250px"></figure>
-      <figure class="gal-tile" data-cat="addition" data-slot="g3"  style="--gal-h:420px"></figure>
-      <figure class="gal-tile" data-cat="siding"   data-slot="g4"  style="--gal-h:290px"></figure>
-      <figure class="gal-tile" data-cat="roof"     data-slot="g5"  style="--gal-h:370px"></figure>
-      <figure class="gal-tile" data-cat="build"    data-slot="g6"  style="--gal-h:230px"></figure>
-      <figure class="gal-tile" data-cat="kitchen"  data-slot="g7"  style="--gal-h:300px"></figure>
-      <figure class="gal-tile" data-cat="bath"     data-slot="g8"  style="--gal-h:400px"></figure>
-      <figure class="gal-tile" data-cat="addition" data-slot="g9"  style="--gal-h:260px"></figure>
-      <figure class="gal-tile" data-cat="siding"   data-slot="g10" style="--gal-h:350px"></figure>
-      <figure class="gal-tile" data-cat="roof"     data-slot="g11" style="--gal-h:240px"></figure>
-      <figure class="gal-tile" data-cat="build"    data-slot="g12" style="--gal-h:390px"></figure>
+      <figure class="gal-tile" data-cat="siding"   data-slot="g1"  style="--gal-h:340px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/63f0f71f-58d2-40b4-4b20-56b132cbbf00/gallery" alt="Sanford whole-home renovation with new siding, front porch, and deck" />
+      </figure>
+      <figure class="gal-tile" data-cat="bathroom" data-slot="g2"  style="--gal-h:250px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/847aec94-460d-4760-8f60-5695ed120a00/gallery" alt="Longwood bathroom remodel with freestanding tub, dual rain showers, and marble tile" />
+      </figure>
+      <figure class="gal-tile" data-cat="kitchen"  data-slot="g3"  style="--gal-h:420px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/d06a271c-3d06-46c9-ac30-30a879060900/gallery" alt="Apopka kitchen remodel with oak cabinetry and quartz waterfall island" />
+      </figure>
+      <figure class="gal-tile" data-cat="outdoor"  data-slot="g4"  style="--gal-h:290px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/37ea463e-a15a-4903-136d-f8ada3347800/gallery" alt="Clermont waterfront composite deck with white railings built by Herrera Contractors" />
+      </figure>
+      <figure class="gal-tile" data-cat="roof"     data-slot="g5"  style="--gal-h:370px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/1f73308f-a734-44af-6534-172e8f387400/gallery" alt="Aerial view of a new shingle roof installed by Herrera Contractors in Sanford" />
+      </figure>
+      <figure class="gal-tile" data-cat="bathroom" data-slot="g6"  style="--gal-h:230px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/e73d7e0e-6a2f-49c3-9fd1-c973cb2d6b00/gallery" alt="Wekiva bathroom remodel with freestanding tub and walk-in marble shower" />
+      </figure>
+      <figure class="gal-tile" data-cat="kitchen"  data-slot="g7"  style="--gal-h:300px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/0688bc03-997a-4a34-1c85-fa621165a900/gallery" alt="Ocoee kitchen remodel with white shaker cabinetry and quartz island" />
+      </figure>
+      <figure class="gal-tile" data-cat="siding"   data-slot="g8"  style="--gal-h:400px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/f712c42b-b886-43a3-bcf9-6cadc156a000/gallery" alt="Sanford home with new board-and-batten siding installed by Herrera Contractors" />
+      </figure>
+      <figure class="gal-tile" data-cat="outdoor"  data-slot="g9"  style="--gal-h:260px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/12c64ea7-e3da-4e39-0c1c-25d00ba48300/gallery" alt="Second-story wood deck and staircase built at a Longwood home" />
+      </figure>
+      <figure class="gal-tile" data-cat="bathroom" data-slot="g10" style="--gal-h:350px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/fc1da853-d2ce-43e7-fbbb-71121872bd00/gallery" alt="Longwood bathroom remodel with dual vanities, soaking tub, and marble tile surround" />
+      </figure>
+      <figure class="gal-tile" data-cat="newbuild" data-slot="g11" style="--gal-h:240px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/0fb0d6ff-88a5-4fc5-795a-4dd604ea7500/gallery" alt="Sanford ground-up new construction home with new roof and front porch" />
+      </figure>
+      <figure class="gal-tile" data-cat="kitchen"  data-slot="g12" style="--gal-h:390px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/05ccb73f-8af9-4a0e-7dfd-a4b48c2cf200/gallery" alt="Longwood kitchen remodel with black island, quartz countertops, and stainless hood" />
+      </figure>
 
       <!-- ---- batch 2: revealed by "Load more projects" ---- -->
-      <figure class="gal-tile" data-cat="kitchen"  data-slot="g13" data-batch="2" style="--gal-h:270px"></figure>
-      <figure class="gal-tile" data-cat="bath"     data-slot="g14" data-batch="2" style="--gal-h:360px"></figure>
-      <figure class="gal-tile" data-cat="addition" data-slot="g15" data-batch="2" style="--gal-h:310px"></figure>
-      <figure class="gal-tile" data-cat="siding"   data-slot="g16" data-batch="2" style="--gal-h:230px"></figure>
-      <figure class="gal-tile" data-cat="roof"     data-slot="g17" data-batch="2" style="--gal-h:410px"></figure>
-      <figure class="gal-tile" data-cat="build"    data-slot="g18" data-batch="2" style="--gal-h:280px"></figure>
-      <figure class="gal-tile" data-cat="kitchen"  data-slot="g19" data-batch="2" style="--gal-h:380px"></figure>
-      <figure class="gal-tile" data-cat="bath"     data-slot="g20" data-batch="2" style="--gal-h:250px"></figure>
-      <figure class="gal-tile" data-cat="addition" data-slot="g21" data-batch="2" style="--gal-h:330px"></figure>
-      <figure class="gal-tile" data-cat="siding"   data-slot="g22" data-batch="2" style="--gal-h:290px"></figure>
-      <figure class="gal-tile" data-cat="roof"     data-slot="g23" data-batch="2" style="--gal-h:340px"></figure>
-      <figure class="gal-tile" data-cat="build"    data-slot="g24" data-batch="2" style="--gal-h:240px"></figure>
+      <figure class="gal-tile" data-cat="adu"      data-slot="g13" data-batch="2" style="--gal-h:270px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/daed6b25-5563-4087-e95e-9eb60e532700/gallery" alt="Orlando ADU addition with new roof and covered back patio built by Herrera Contractors" />
+      </figure>
+      <figure class="gal-tile" data-cat="bathroom" data-slot="g14" data-batch="2" style="--gal-h:360px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/7453ab5b-3c0c-45f8-40e8-dd5ba9745500/gallery" alt="Longwood bathroom remodel with subway tile walk-in shower and black fixtures" />
+      </figure>
+      <figure class="gal-tile" data-cat="kitchen"  data-slot="g15" data-batch="2" style="--gal-h:310px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/918a2548-88f6-4485-b4e7-e6d440b79800/gallery" alt="Wekiva kitchen remodel with gray shaker cabinets and quartz peninsula" />
+      </figure>
+      <figure class="gal-tile" data-cat="siding"   data-slot="g16" data-batch="2" style="--gal-h:230px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/45ebcca1-c7a0-4dc7-4380-2487e8bb3000/gallery" alt="Altamonte Springs home with new siding and shingle roof" />
+      </figure>
+      <figure class="gal-tile" data-cat="outdoor"  data-slot="g17" data-batch="2" style="--gal-h:410px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/799446f2-a602-453e-2634-e294958eb400/gallery" alt="New travertine paver patio at a Winter Springs home" />
+      </figure>
+      <figure class="gal-tile" data-cat="bathroom" data-slot="g18" data-batch="2" style="--gal-h:280px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/ac079bdf-16a4-4c18-2c0c-13d152077800/gallery" alt="Longwood bathroom remodel with marble-look walk-in shower and floating vanity" />
+      </figure>
+      <figure class="gal-tile" data-cat="kitchen"  data-slot="g19" data-batch="2" style="--gal-h:380px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/8c7f6641-b05b-4545-b5f5-97766d815400/gallery" alt="Orlando galley kitchen remodel with espresso cabinets and quartz countertops" />
+      </figure>
+      <figure class="gal-tile" data-cat="outdoor"  data-slot="g20" data-batch="2" style="--gal-h:250px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/24d07cdf-e640-491d-226a-b14b8d8ca900/gallery" alt="New composite deck built at a Longwood home" />
+      </figure>
+      <figure class="gal-tile" data-cat="bathroom" data-slot="g21" data-batch="2" style="--gal-h:330px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/21de8622-7ae3-48a8-3c76-5ed4d170b300/gallery" alt="Wekiva bathroom remodel with green dual vanity and custom walk-in closet" />
+      </figure>
+      <figure class="gal-tile" data-cat="kitchen"  data-slot="g22" data-batch="2" style="--gal-h:290px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/21e47271-1231-4da5-3e73-9683ab580700/gallery" alt="Sanford galley kitchen remodel with maple cabinetry and granite countertops" />
+      </figure>
+      <figure class="gal-tile" data-cat="outdoor"  data-slot="g23" data-batch="2" style="--gal-h:340px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/f936fd57-d534-4c91-380a-8a681df52800/gallery" alt="Travertine paver patio and rear exterior at a Winter Springs home" />
+      </figure>
+      <figure class="gal-tile" data-cat="kitchen"  data-slot="g24" data-batch="2" style="--gal-h:240px">
+        <img class="gal-img" loading="lazy" src="https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/20629d20-720c-4a22-4518-b04bc5c1c300/gallery" alt="Longwood galley kitchen remodel with herringbone backsplash and quartz counters" />
+      </figure>
 
     </div>
 
@@ -358,31 +377,24 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
 (function () {
   "use strict";
 
-  var filters = document.getElementById("galFilters");
   var grid = document.getElementById("galGrid");
   var moreBtn = document.getElementById("galMore");
   var countEl = document.getElementById("galCount");
-  if (!filters || !grid || !moreBtn || !countEl) return;
+  if (!grid || !moreBtn || !countEl) return;
 
   var tiles = Array.prototype.slice.call(grid.querySelectorAll(".gal-tile"));
-  var cat = "all";
   var expanded = false;
 
-  function matches(tile) {
-    return cat === "all" || tile.getAttribute("data-cat") === cat;
-  }
   function isSecondBatch(tile) {
     return tile.getAttribute("data-batch") === "2";
   }
 
   function render() {
     var shown = 0;
-    var total = 0;
+    var total = tiles.length;
 
     tiles.forEach(function (tile) {
-      var inFilter = matches(tile);
-      if (inFilter) total++;
-      var show = inFilter && (expanded || !isSecondBatch(tile));
+      var show = expanded || !isSecondBatch(tile);
       if (show) shown++;
       tile.classList.toggle("is-hidden", !show);
     });
@@ -390,20 +402,11 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
     countEl.textContent =
       "Showing " + shown + " of " + total + (total === 1 ? " project" : " projects");
 
-    // nothing held back for this filter — no reason to offer the button
+    // everything already on screen — no reason to offer the button
     var hasMore = total > shown || expanded;
     moreBtn.style.display = hasMore ? "" : "none";
     moreBtn.textContent = expanded ? "Show Less" : "Load More Projects";
   }
-
-  filters.addEventListener("click", function (e) {
-    var btn = e.target.closest("button");
-    if (!btn) return;
-    filters.querySelectorAll("button").forEach(function (b) { b.classList.remove("active"); });
-    btn.classList.add("active");
-    cat = btn.getAttribute("data-filter");
-    render();
-  });
 
   moreBtn.addEventListener("click", function () {
     expanded = !expanded;

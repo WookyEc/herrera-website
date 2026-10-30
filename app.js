@@ -17,9 +17,21 @@
   var burger = document.getElementById("burger");
   var drawer = document.getElementById("drawer");
   if (burger && drawer) {
+    var panelToggle = drawer.querySelector(".panel-sub-toggle");
+    var panelList = drawer.querySelector(".panel-sublist");
+    var setPanelSub = function (open) {
+      if (!panelToggle || !panelList) return;
+      panelToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      panelList.hidden = !open;
+    };
     burger.addEventListener("click", function () { drawer.classList.add("open"); });
     drawer.addEventListener("click", function (e) {
-      if (e.target.closest("[data-close]")) drawer.classList.remove("open");
+      if (e.target.closest(".panel-sub-toggle")) { setPanelSub(panelList.hidden); return; }
+      if (e.target.closest("[data-close]")) {
+        drawer.classList.remove("open");
+        // collapse after the slide-out so the panel doesn't jump while closing
+        setTimeout(function () { setPanelSub(false); }, 300);
+      }
     });
   }
 

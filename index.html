@@ -169,13 +169,18 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
   <div class="scrim" data-close></div>
   <div class="panel">
     <button class="close" data-close aria-label="Close menu">&times;</button>
-    <a href="#services" data-close>Services</a>
-    <a class="sub" href="#svc-kitchen" data-close>Kitchen Remodeling</a>
-    <a class="sub" href="#svc-bathroom" data-close>Bathroom Remodeling</a>
-    <a class="sub" href="#svc-whole-home" data-close>Whole-Home Remodeling</a>
-    <a class="sub" href="#svc-additions" data-close>Home Additions &amp; ADUs</a>
-    <a class="sub" href="#svc-new-construction" data-close>New Construction</a>
-    <a class="sub" href="#svc-roofing" data-close>Roofing</a>
+    <div class="panel-sub">
+      <a href="#services" data-close>Services</a>
+      <button class="panel-sub-toggle" type="button" aria-expanded="false" aria-controls="panel-services" aria-label="Show services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+    </div>
+    <div class="panel-sublist" id="panel-services" hidden>
+      <a class="sub" href="#svc-kitchen" data-close>Kitchen Remodeling</a>
+      <a class="sub" href="#svc-bathroom" data-close>Bathroom Remodeling</a>
+      <a class="sub" href="#svc-whole-home" data-close>Whole-Home Remodeling</a>
+      <a class="sub" href="#svc-additions" data-close>Home Additions &amp; ADUs</a>
+      <a class="sub" href="#svc-new-construction" data-close>New Construction</a>
+      <a class="sub" href="#svc-roofing" data-close>Roofing</a>
+    </div>
     <a href="#projects" data-close>Projects</a>
     <a class="nav-pill" href="home-addition-cost-estimator.html" data-close>Estimator</a>
     <a href="#financing" data-close>Financing</a>

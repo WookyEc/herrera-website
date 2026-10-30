@@ -911,6 +911,16 @@ section[id], .svc[id] { scroll-margin-top: 88px; }
 .hero .quote-card .qc-fine { font-size: 0.92rem; }
 .hero .quote-card .qc-fine a:hover { color: var(--orange-600) !important; }
 
+/* tap-to-call line above the form card */
+.hero-side { display: flex; flex-direction: column; min-width: 0; }
+.hero-call {
+  display: inline-flex; align-items: center; gap: 9px; align-self: center; margin-bottom: 14px;
+  font-family: var(--head); text-transform: uppercase; letter-spacing: 0.05em;
+  font-weight: 600; font-size: 1.05rem; color: #fff; white-space: nowrap;
+}
+.hero-call svg { width: 17px; height: 17px; flex: none; color: var(--orange); }
+.hero-call:hover { color: var(--orange); }
+
 @media (max-width: 920px){
   .hero-photo { aspect-ratio: 16 / 8; }
 }
@@ -918,6 +928,9 @@ section[id], .svc[id] { scroll-margin-top: 88px; }
 /* desktop: align the form card top with the headline (not the pill above it) */
 @media (min-width: 921px){
   .hero .quote-card { margin-top: 61px; }
+  /* the call line fills the 61px above the card, level with the location pill */
+  .hero-side .hero-call { align-self: flex-end; height: 39px; margin-bottom: 22px; }
+  .hero .hero-side .quote-card { margin-top: 0; flex: 1; }
   .hero .wrap { align-items: stretch; }
   .hero-photo { flex: 1 1 0; aspect-ratio: auto; min-height: 240px; }
 }@media (max-width: 480px){

@@ -136,11 +136,22 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
       <img class="brand-logo" src="images/logo-full.png" alt="Herrera Contractors" />
     </a>
     <nav class="menu" aria-label="Primary">
-      <a href="#services">Services</a>
-      <a href="#why">Why Us</a>
+      <div class="has-sub">
+        <a href="#services">Services</a>
+        <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="sub-services" aria-label="Show services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="submenu" id="sub-services">
+          <li><a href="#svc-kitchen">Kitchen Remodeling</a></li>
+          <li><a href="#svc-bathroom">Bathroom Remodeling</a></li>
+          <li><a href="#svc-whole-home">Whole-Home Remodeling</a></li>
+          <li><a href="#svc-additions">Home Additions &amp; ADUs</a></li>
+          <li><a href="#svc-new-construction">New Construction</a></li>
+          <li><a href="#svc-roofing">Roofing</a></li>
+        </ul>
+      </div>
       <a href="#projects">Projects</a>
-      <a href="#reviews">Reviews</a>
+      <a class="nav-pill" href="home-addition-cost-estimator.html">Estimator</a>
       <a href="#financing">Financing</a>
+      <a href="#why">About</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-actions">
@@ -159,10 +170,16 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
   <div class="panel">
     <button class="close" data-close aria-label="Close menu">&times;</button>
     <a href="#services" data-close>Services</a>
-    <a href="#why" data-close>Why Us</a>
+    <a class="sub" href="#svc-kitchen" data-close>Kitchen Remodeling</a>
+    <a class="sub" href="#svc-bathroom" data-close>Bathroom Remodeling</a>
+    <a class="sub" href="#svc-whole-home" data-close>Whole-Home Remodeling</a>
+    <a class="sub" href="#svc-additions" data-close>Home Additions &amp; ADUs</a>
+    <a class="sub" href="#svc-new-construction" data-close>New Construction</a>
+    <a class="sub" href="#svc-roofing" data-close>Roofing</a>
     <a href="#projects" data-close>Projects</a>
-    <a href="#reviews" data-close>Reviews</a>
+    <a class="nav-pill" href="home-addition-cost-estimator.html" data-close>Estimator</a>
     <a href="#financing" data-close>Financing</a>
+    <a href="#why" data-close>About</a>
     <a href="#contact" data-close>Contact</a>
     <a class="btn btn-primary" href="#contact" data-close>Get a Free Consultation</a>
   </div>
@@ -330,7 +347,7 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
       <p>Whether you're refreshing a single room or building from the ground up, you'll work with the same family crew from first handshake to final walkthrough.</p>
     </div>
     <div class="grid">
-      <article class="svc reveal">
+      <article class="svc reveal" id="svc-kitchen">
         <div class="svc-img" style="background-image:url('https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/0c3e9b1e-745c-4530-6e87-97fdc44cdd00/public');" role="img" aria-label="Open-concept kitchen with white shaker cabinets, large island with seating and pendant accent lighting, Longwood, FL"></div>
         <div class="svc-body">
           <h3>Kitchen Remodeling</h3>
@@ -338,7 +355,7 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
           <a class="svc-link" href="#contact">Start a remodel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </article>
-      <article class="svc reveal d1">
+      <article class="svc reveal d1" id="svc-bathroom">
         <div class="svc-img" style="background-image:url('https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/9d1cf714-35bf-4ce2-f47f-2a4d2bf7e500/public');" role="img" aria-label="Renovated master bathroom with freestanding tub and tiled walk-in shower in Wekiva, FL"></div>
         <div class="svc-body">
           <h3>Bathroom Remodeling</h3>
@@ -346,7 +363,7 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
           <a class="svc-link" href="#contact">Start a remodel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </article>
-      <article class="svc reveal d2">
+      <article class="svc reveal d2" id="svc-whole-home">
         <div class="svc-img" style="background-image:url('https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/088246ed-be9e-4c59-dea4-9c11b3709b00/public');" role="img" aria-label="Open-concept living and dining area open to the kitchen, with new flooring and fresh paint after a full interior renovation, Apopka, FL"></div>
         <div class="svc-body">
           <h3>Whole-Home Remodeling</h3>
@@ -354,7 +371,7 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
           <a class="svc-link" href="#contact">Start a remodel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </article>
-      <article class="svc reveal">
+      <article class="svc reveal" id="svc-additions">
         <div class="svc-img" style="background-image:url('https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/08f65520-2f24-49de-b1ac-487187d7ab00/public');" role="img" aria-label="Concrete block walls and roof framing going up on a new room addition tied into an existing home in Longwood, FL"></div>
         <div class="svc-body">
           <h3>Home Additions &amp; ADUs</h3>
@@ -362,7 +379,7 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
           <a class="svc-link" href="/home-addition-cost-estimator.html">Plan your addition <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </article>
-      <article class="svc reveal d1">
+      <article class="svc reveal d1" id="svc-new-construction">
         <div class="svc-img" style="background-image:url('https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/7775999e-d0f7-4b55-629a-729316d60d00/public');" role="img" aria-label="Historic Sanford, FL bungalow after a full rehabilitation, with new light gray siding, windows and a rebuilt front porch"></div>
         <div class="svc-body">
           <h3>New Construction</h3>
@@ -370,7 +387,7 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
           <a class="svc-link" href="#contact">Plan your build <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </article>
-      <article class="svc reveal d2">
+      <article class="svc reveal d2" id="svc-roofing">
         <div class="svc-img" style="background-image:url('https://imagedelivery.net/YjrbSYFXvcUhhHd9tJYJvg/e06026bd-8696-4b11-4405-5d55130c6000/public');" role="img" aria-label="Completed architectural shingle roof replacement on a single-family home in Longwood, FL, seen from above"></div>
         <div class="svc-body">
           <h3>Roofing</h3>

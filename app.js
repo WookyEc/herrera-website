@@ -23,6 +23,34 @@
     });
   }
 
+  /* ---- services dropdown ---- */
+  var sub = document.querySelector(".menu .has-sub");
+  if (sub) {
+    var subLabel = sub.querySelector("a");
+    var subToggle = sub.querySelector(".sub-toggle");
+    var setSub = function (open) {
+      sub.classList.toggle("open", open);
+      subToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    subLabel.addEventListener("focus", function () { setSub(true); });
+    subToggle.addEventListener("click", function () { setSub(!sub.classList.contains("open")); });
+    sub.addEventListener("focusout", function (e) {
+      if (!sub.contains(e.relatedTarget)) setSub(false);
+    });
+    sub.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () { setSub(false); });
+    });
+    document.addEventListener("click", function (e) {
+      if (!sub.contains(e.target)) setSub(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && sub.classList.contains("open")) {
+        setSub(false);
+        subToggle.focus();
+      }
+    });
+  }
+
   /* ---- scroll reveal ---- */
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {

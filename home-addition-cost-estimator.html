@@ -118,183 +118,224 @@
  ]
 }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
 <style>
-/* Herrera Contractors design system: cream page, charcoal ink, brand orange accent, brand blue for trust/structure.
-   Athelas (serif) for headings and text, Plantagenet Cherokee letterspaced caps for eyebrows. One light theme, like the site. */
-/* Figures everywhere: every digit (and $ %) on the page is drawn with a plain sans whose 1 cannot be read as I, while the
-   words around them stay in Athelas. The face only covers those characters, so the browser falls back to Athelas for all others.
-   Font names cover iPhone/Mac (Helvetica Neue), Android (Roboto) and Windows (Segoe UI, Arial); size-adjust matches Athelas' figure height. */
-@font-face{font-family:'HC Figures';font-weight:400;src:local('Helvetica Neue'),local('HelveticaNeue'),local('Roboto'),local('Segoe UI'),local('SegoeUI'),local('Arial'),local('ArialMT');unicode-range:U+0024-0025,U+0030-0039;size-adjust:93%}
-@font-face{font-family:'HC Figures';font-weight:700;src:local('Helvetica Neue Bold'),local('HelveticaNeue-Bold'),local('Roboto Bold'),local('Roboto-Bold'),local('Segoe UI Bold'),local('SegoeUI-Bold'),local('Arial Bold'),local('Arial-BoldMT');unicode-range:U+0024-0025,U+0030-0039;size-adjust:93%}
-:root{
-  --bg:#FDF5E9;          /* cream-100 · page */
-  --bg-alt:#FBEEDB;      /* cream-200 · soft bands */
-  --surface:#FFFFFF;
-  --ink:#232323;         /* ink-800 · text */
-  --ink-strong:#151516;
-  --muted:#454545;       /* ink-600 · secondary text */
-  --slate:#697E8E;       /* ink-500 · small labels, large sizes only */
-  --line:#E4D3B6;        /* sand-400 · borders */
-  --line-subtle:#F0E3CF; /* sand-300 · dividers */
-  --line-strong:#939496; /* stone-600 · field borders */
-  --accent:#FF7101;      /* brand orange */
-  --accent-hover:#E25E00;
-  --accent-deep:#CC2600;
-  --accent-soft:#FFEFD4; /* brand cream tint */
-  --accent-ink:#FFFFFF;
-  --accent-2:#1251AD;    /* brand blue */
-  --accent-2-hover:#0E3F86;
-  --focus:#1C7DF2;
-  --shadow-sm:0 1px 3px rgba(58,44,28,.08),0 1px 2px rgba(58,44,28,.05);
-  --shadow-lg:0 12px 28px rgba(58,44,28,.10),0 4px 10px rgba(58,44,28,.06);
-  --radius:10px;
-  --display:'HC Figures','Athelas','Iowan Old Style','Palatino Linotype',Georgia,serif;
-  --body:'HC Figures','Athelas','Iowan Old Style',Georgia,'Times New Roman',serif;
-  --caps:'HC Figures','Plantagenet Cherokee','Athelas',Georgia,serif;
-  --num:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif; /* figures only: a sans whose 1 cannot be read as I */
-  color-scheme:light;
-}
-*{box-sizing:border-box}
-[hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 calc(96px + env(safe-area-inset-bottom,0px))}
-h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.02em;color:var(--ink);font-weight:700}
-h1{font-size:clamp(34px,7vw,48px)}
-h2{font-size:28px}
-h3{font-size:22px}
-p{margin:0}
-.wrap{max-width:620px;margin:0 auto}
-.eyebrow{font-family:var(--caps);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:400}
-header.hero{padding-block:28px 20px;display:grid;gap:10px}
-header.hero p{color:var(--muted);font-size:17px}
-header.hero .assume{font-size:15px;line-height:1.45;color:var(--ink);border-left:3px solid var(--accent);padding:10px 12px 10px 12px;margin-top:4px;background:var(--accent-soft);border-radius:0 var(--radius) var(--radius) 0}
-header.hero .assume b{color:var(--ink-strong);font-family:var(--display);font-size:17px;display:block;margin-bottom:4px}
-header.hero .assume ul{margin:0;padding-left:18px;display:grid;gap:6px}
-.grid{display:grid;grid-template-columns:1fr;gap:28px}
-/* Sticky bottom bar: live range while scrolling the questions (phone-first); translucent cream + blur like the site header */
-.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(253,245,233,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(58,44,28,.10);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));transition:transform .22s cubic-bezier(.22,1,.36,1),opacity .22s}
-.bar.off{transform:translateY(110%);opacity:0;pointer-events:none}
-.bar .in{max-width:620px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.bar .lbl{font-family:var(--caps);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
-.bar .amt{font-family:var(--num);font-size:clamp(16px,4.5vw,24px);font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.01em}
-.bar .btn{font-size:16px;padding:12px 18px;min-height:48px;flex:none}
-/* Classic form: questions separated by rules, options as plain rows */
-.steps{display:grid;gap:0;min-width:0;border-top:2px solid var(--ink)}
-.step{padding:22px 0 22px;border-bottom:2px solid var(--line);display:grid;gap:8px}
-.step:last-child{border-bottom:2px solid var(--ink)}
-.step .q{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
-.step .q small{color:var(--muted);font-size:15px}
-.opts{display:grid;grid-template-columns:1fr;gap:0}
-.opt{position:relative;display:grid;grid-template-columns:22px 1fr;gap:14px;align-items:start;padding:12px 4px;min-height:48px;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:6px}
-.opt:active{background:var(--accent-soft)}
-.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
-/* Form-style box: dashed and empty until selected, then filled brand orange with a white check (the system's checkbox) */
-.mark{width:22px;height:22px;position:relative;z-index:1;flex:none;margin-top:2px;border:1.5px dashed var(--line-strong);border-radius:4px;background:var(--surface);transition:border-color .14s,background .14s;cursor:pointer}
-.mark::after{content:"";position:absolute;inset:2px;background:var(--accent-ink);opacity:0;transition:opacity .14s;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 12.5l5 5L19.5 7'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 12.5l5 5L19.5 7'/%3E%3C/svg%3E") center/contain no-repeat}
-.opt:has(input:checked) .mark{border-style:solid;border-color:var(--accent);background:var(--accent)}
-.opt b{font-weight:700;font-size:17px;display:block;color:var(--ink)}
-/* Short description under each option: hidden in the list, shown only once that option is selected */
-.opt>div>span{font-size:15px;color:var(--muted);line-height:1.4;display:none;margin-top:2px}
-.opts.picked .opt:has(input:checked)>div>span{display:block}
-.opt:has(input:checked) .mark::after{opacity:1}
-.opt:has(input:focus-visible){outline:2px solid var(--focus);outline-offset:-2px}
-.opt .tag{font-family:var(--caps);font-size:13px;color:var(--accent-deep);letter-spacing:.12em;text-transform:uppercase}
-/* note under an option that only applies to some addition types; the option greys out for the others */
-.opt .only{display:block;font-size:13px;font-style:italic;color:var(--accent-deep);margin-top:1px}
-.opt.disabled{opacity:.45;cursor:not-allowed}
-.opt.disabled input,.opt.disabled .mark{cursor:not-allowed}
-/* Longer explanation per option: hidden in the list, shown only for the chosen option once the list collapses */
-.opt .more{display:none;margin-top:10px;padding:8px 12px 8px 12px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 var(--radius) var(--radius) 0;font-size:15px;line-height:1.45;color:var(--ink)}
-.opts.picked .opt:has(input:checked) .more{display:block}
-/* After the customer picks, collapse the question to the chosen row with a Change link */
-.opts.picked .opt:not(:has(input:checked)){display:none}
-.change{justify-self:start;font:inherit;font-size:15px;font-weight:700;color:var(--accent-hover);background:none;border:0;border-bottom:1.5px solid currentColor;padding:2px 0;margin:2px 0 0 36px;cursor:pointer;min-height:32px;-webkit-tap-highlight-color:transparent;transition:color .14s}
-.change:hover{color:var(--accent-deep)}
-.change:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
-/* Size rows look like the other options; the one being typed in shows as checked */
-.sizeopt{cursor:text}
-.sizeopt .val input,.sizeopt .dims input{position:static;opacity:1;height:auto;margin:0;cursor:text}
-.sizeopt .val input{width:130px}
-.sizeopt .dims input{width:84px}
-.sizeopt.active .mark{border-style:solid;border-color:var(--accent);background:var(--accent)}
-.sizeopt.active .mark::after{opacity:1}
-.sizeopt.active>div>span{display:block}
-.sizeopts.done .sizeopt:not(.active){display:none}
-.val{display:flex;align-items:baseline;gap:8px;margin-top:6px}
-.val input{font-family:var(--num);font-size:32px;font-weight:700;font-variant-numeric:tabular-nums;width:130px;padding:2px 4px;border:0;border-bottom:2px solid var(--line-strong);border-radius:0;background:transparent;color:var(--ink);transition:border-color .14s}
-.val input,.dims label input{-moz-appearance:textfield;appearance:textfield}
-.val input::-webkit-outer-spin-button,.val input::-webkit-inner-spin-button,.dims label input::-webkit-outer-spin-button,.dims label input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.val input:focus-visible,.dims input:focus-visible{outline:0;border-bottom-color:var(--focus)}
-.val small{font-family:var(--body);font-size:16px;color:var(--muted);font-weight:400}
-.dims{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:6px}
-.dims label{display:flex;align-items:baseline;gap:6px;font-size:14px;color:var(--muted)}
-.dims label span{display:none}
-.dims label input{font-family:var(--num);font-size:32px;font-weight:700;width:84px;padding:2px 4px;border:0;border-bottom:2px solid var(--line-strong);border-radius:0;background:transparent;color:var(--ink);font-variant-numeric:tabular-nums;transition:border-color .14s}
-.dims label small{font-size:15px;color:var(--muted)}
-.dims .x{font-family:var(--num);font-size:24px;color:var(--slate)}
-.dims .eq{font-size:16px;color:var(--muted)}
-.dims .eq b{display:inline;color:var(--ink);font-family:var(--num);font-size:24px;font-variant-numeric:tabular-nums}
-.result{display:grid;gap:0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);min-width:0;background:var(--bg);scroll-margin-top:16px}
-.result .top{padding:20px 0 14px;display:grid;gap:6px}
-.money{font-family:var(--num);font-size:clamp(30px,8.6vw,56px);font-weight:700;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em;color:var(--ink-strong)}
-.money .dash{color:var(--slate);margin:0 .1em}
-.pending{color:var(--muted);font-size:16px;padding:6px 0 8px}
+/* =========================================================
+   ADDITION ESTIMATOR — scoped to home-addition-cost-estimator.html
+   Uses the site's existing tokens from styles.css only.
+   ========================================================= */
+[hidden] { display: none !important; }
+
+/* ---------- page column: narrow, form-friendly ---------- */
+.est { max-width: 760px; margin: 0 auto; display: grid; gap: clamp(28px, 4vw, 40px); }
+.est .btn { white-space: normal; text-align: center; }
+.est .btn:focus-visible, .bar .btn:focus-visible { outline: 3px solid var(--navy-600); outline-offset: 3px; }
+
+/* ---------- intro ---------- */
+.est-hero { display: grid; gap: 16px; }
+.est-hero h1 { font-size: clamp(2rem, 4.6vw, 3.1rem); }
+.est-hero p { font-size: 1.08rem; }
+.est-hero .assume { margin-top: 6px; padding: 16px 20px; background: var(--orange-100); border-left: 4px solid var(--orange); border-radius: 0 var(--r) var(--r) 0; color: var(--ink); font-size: 0.98rem; line-height: 1.5; }
+.est-hero .assume b { display: block; margin-bottom: 6px; font-family: var(--head); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; font-size: 1rem; }
+.est-hero .assume ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+
+/* ---------- questions card ---------- */
+.est .grid { display: grid; gap: 24px; }
+.est .steps { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); padding: 0 clamp(18px, 4vw, 32px); min-width: 0; }
+.est .step { padding: clamp(20px, 3vw, 28px) 0; display: grid; gap: 10px; border-bottom: 1px solid var(--line); }
+.est .step:last-child { border-bottom: 0; }
+.est .step .q { display: flex; gap: 6px 12px; align-items: baseline; flex-wrap: wrap; }
+.est .step h3 { font-size: clamp(1.25rem, 2.6vw, 1.5rem); }
+.est .step .q small { color: var(--muted); font-size: 0.95rem; }
+
+/* ---------- option rows: hidden radio + checkbox-style mark ---------- */
+.est .opts { display: grid; gap: 0; }
+.est .opt { position: relative; display: grid; grid-template-columns: 22px 1fr; gap: 14px; align-items: start; padding: 12px 4px; min-height: 48px; cursor: pointer; border-radius: var(--r-sm); -webkit-tap-highlight-color: transparent; }
+.est .opt:active { background: var(--orange-100); }
+.est .opt input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.est .opt:has(input:focus-visible) { outline: 2px solid var(--navy-600); outline-offset: -2px; }
+.est .opt b { display: block; font-weight: 600; font-size: 1.06rem; color: var(--ink); }
+.est .mark { position: relative; z-index: 1; width: 22px; height: 22px; margin-top: 3px; border: 1.5px dashed var(--muted); border-radius: 4px; background: var(--white); transition: border-color .15s, background .15s; cursor: pointer; }
+.est .mark::after { content: ""; position: absolute; inset: 2px; background: #fff; opacity: 0; transition: opacity .15s;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 12.5l5 5L19.5 7'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 12.5l5 5L19.5 7'/%3E%3C/svg%3E") center/contain no-repeat; }
+.est .opt:has(input:checked) .mark, .est .sizeopt.active .mark { border-style: solid; border-color: var(--orange); background: var(--orange); }
+.est .opt:has(input:checked) .mark::after, .est .sizeopt.active .mark::after { opacity: 1; }
+/* short description: shown only for the chosen option */
+.est .opt > div > span { display: none; margin-top: 2px; font-size: 0.95rem; line-height: 1.45; color: var(--body); }
+.est .opts.picked .opt:has(input:checked) > div > span, .est .sizeopt.active > div > span { display: block; }
+.est .opt .tag { font-family: var(--head); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange-600); }
+/* options only available for some addition types */
+.est .opt .only { display: block; margin-top: 1px; font-size: 0.85rem; font-style: italic; color: var(--orange-600); }
+.est .opt.disabled { opacity: .45; cursor: not-allowed; }
+.est .opt.disabled input, .est .opt.disabled .mark { cursor: not-allowed; }
+/* longer explanation for the chosen option once the list collapses */
+.est .opt .more { display: none; margin-top: 10px; padding: 10px 14px; background: var(--orange-100); border-left: 3px solid var(--orange); border-radius: 0 var(--r) var(--r) 0; font-size: 0.95rem; line-height: 1.5; color: var(--ink); }
+.est .opts.picked .opt:has(input:checked) .more { display: block; }
+/* collapse a question to the chosen row, with a Change link */
+.est .opts.picked .opt:not(:has(input:checked)) { display: none; }
+.est .change { justify-self: start; margin: 2px 0 0 40px; padding: 2px 0; min-height: 32px; background: none; border: 0; border-bottom: 2px solid var(--orange); font-family: var(--head); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.est .change:hover { color: var(--orange-600); }
+.est .change:focus-visible { outline: 2px solid var(--navy-600); outline-offset: 3px; }
+
+/* ---------- size entry ---------- */
+.est .sizeopt { cursor: text; }
+.est .sizeopts.done .sizeopt:not(.active) { display: none; }
+.est .sizeopt .val input, .est .sizeopt .dims input { position: static; opacity: 1; height: auto; cursor: text; }
+.est .val, .est .dims { display: flex; align-items: baseline; flex-wrap: wrap; margin-top: 6px; }
+.est .val { gap: 8px; }
+.est .dims { gap: 10px; }
+.est .val input, .est .dims label input { font-family: var(--head); font-size: 2rem; font-weight: 600; font-variant-numeric: tabular-nums; padding: 2px 4px; border: 0; border-bottom: 2px solid var(--line); border-radius: 0; background: transparent; color: var(--ink); -moz-appearance: textfield; appearance: textfield; transition: border-color .15s; }
+.est .val input { width: 130px; }
+.est .dims label input { width: 84px; }
+.est .val input:focus-visible, .est .dims input:focus-visible { outline: 0; border-bottom-color: var(--orange); }
+.est .val small { font-size: 1rem; color: var(--muted); }
+.est .dims label { display: flex; align-items: baseline; gap: 6px; font-size: 0.9rem; color: var(--muted); }
+.est .dims label span { display: none; }
+.est .dims label small { font-size: 0.95rem; color: var(--muted); }
+.est .dims .x { font-family: var(--head); font-size: 1.5rem; color: var(--muted); }
+.est .dims .eq { color: var(--muted); }
+.est .dims .eq b { display: inline; font-family: var(--head); font-size: 1.5rem; font-weight: 600; color: var(--ink); }
+
+/* ---------- result card ---------- */
+.est .result { background: var(--white); border: 1px solid var(--line); border-top: 4px solid var(--orange); border-radius: var(--r-lg); box-shadow: var(--shadow-md); padding: 0 clamp(18px, 4vw, 32px); min-width: 0; scroll-margin-top: 96px; }
+.est .result .top { padding: clamp(20px, 3vw, 28px) 0 18px; display: grid; gap: 10px; }
+.est .money { font-family: var(--head); font-weight: 600; font-size: clamp(2.2rem, 9vw, 3.6rem); line-height: 1; letter-spacing: 0.01em; font-variant-numeric: tabular-nums; color: var(--navy); }
+.est .money .dash { color: var(--muted); margin: 0 .1em; }
+.est .pending { color: var(--body); }
 /* floored result: a single "From $X" figure instead of a range */
-.money .from,.amt .from{display:none;font-family:var(--body);font-weight:400;font-size:.45em;color:var(--muted);margin-right:.35em;vertical-align:middle}
-.amt .from{font-size:.7em}
-.single .from{display:inline}
-.single .dash,.single .hi{display:none}
-.cta{padding:14px 0 20px;display:grid;gap:10px;border-top:1px solid var(--line)}
-.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;font-family:var(--body);font-size:18px;font-weight:700;padding:14px 22px;min-height:52px;border-radius:var(--radius);border:1px solid transparent;cursor:pointer;text-decoration:none;box-shadow:var(--shadow-sm);transition:background .14s cubic-bezier(.22,1,.36,1),transform .14s cubic-bezier(.22,1,.36,1);-webkit-tap-highlight-color:transparent;text-align:center}
-.btn.primary{background:var(--accent);color:var(--accent-ink)}
-.btn.primary:hover{background:var(--accent-hover);transform:translateY(-1px)}
-.btn.ghost{background:var(--accent-2);color:#FFFFFF}
-.btn.ghost:hover{background:var(--accent-2-hover);transform:translateY(-1px)}
-.btn.outline{background:transparent;color:var(--accent-2);border-color:var(--accent-2);box-shadow:none;font-size:16px;padding:10px 16px;min-height:44px}
-.btn.outline:hover{background:var(--accent-2);color:#FFFFFF}
-/* financing line under the range, before the budget question */
-.finance{display:grid;gap:10px;justify-items:start;margin:0 0 18px}
-.finance p{margin:0;color:var(--muted);font-size:14px}
-.btn:active{transform:translateY(0)}
-.btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
-.cta .ask{font-weight:700;font-size:19px;font-family:var(--display);letter-spacing:-.01em}
-.fitpanel{display:grid;gap:10px;font-size:15px;line-height:1.5;padding-top:4px}
-.fitpanel b{color:var(--ink-strong)}
-.cta .phone{text-align:center;font-size:15px;color:var(--muted)}
-section.detail{margin-top:36px;display:grid;gap:28px}
-.cols{display:grid;grid-template-columns:1fr;gap:24px}
-.card{border-top:2px solid var(--ink);padding:14px 0 0;display:grid;gap:10px;min-width:0}
-.card ul{margin:0;padding-left:0;list-style:none;display:grid;gap:0}
-.card li{display:block;position:relative;font-size:16px;padding:7px 0 7px 17px;border-bottom:1px solid var(--line-subtle)}
-.card li::before{content:"";position:absolute;left:0;top:16px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
-.card.ex li::before{background:var(--slate)}
-/* secondary note sits on its own line under the item */
-.card li em{display:block;margin-top:2px;font-size:14px;line-height:1.4;color:var(--muted);font-style:italic}
-.phases{display:grid;gap:0;border-top:2px solid var(--ink)}
-.phase{display:grid;grid-template-columns:72px 1fr auto;gap:14px;padding:12px 4px;border-bottom:1px solid var(--line-subtle);align-items:baseline}
-.phase .pct{font-family:var(--num);font-size:26px;font-weight:700;color:var(--accent-2);font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.01em}
-.phase .pct small{font-family:var(--caps);font-size:11px;font-weight:400;color:var(--slate);margin-left:3px;letter-spacing:.12em;text-transform:uppercase}
-.phase b{font-weight:700}
-.phase span{color:var(--muted);font-size:15px;display:block}
-.phase .when{font-size:14px;color:var(--muted);white-space:nowrap}
-@media (max-width:520px){.phase{grid-template-columns:60px 1fr}.phase .when{grid-column:2}}
-.fine{color:var(--muted);font-size:14px;max-width:70ch}
-.faq{margin-top:14px;border-top:1px solid var(--line)}
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr 24px;align-items:center;gap:12px;padding:14px 0;-webkit-tap-highlight-color:transparent}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary h3{font-size:19px;margin:0}
-.faq summary::after{content:"+";font-family:var(--num);font-size:26px;font-weight:400;color:var(--accent);line-height:1;text-align:center;transition:transform .18s cubic-bezier(.22,1,.36,1)}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{margin:0 0 16px}
-::selection{background:#F7C792;color:var(--ink-strong)}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.est .money .from, .bar .amt .from { display: none; margin-right: .35em; font-family: var(--sans); font-weight: 400; font-size: .45em; color: var(--muted); vertical-align: middle; }
+.bar .amt .from { font-size: .7em; }
+.est .money.single .from, .bar .amt.single .from { display: inline; }
+.single .dash, .single .hi { display: none; }
+.est .cta { padding: 18px 0 clamp(20px, 3vw, 28px); display: grid; gap: 12px; border-top: 1px solid var(--line); }
+.est .finance { display: grid; gap: 10px; justify-items: start; margin-bottom: 10px; }
+.est .finance p { font-size: 0.95rem; color: var(--body); }
+.est .finance .btn { padding: 11px 20px; font-size: 0.92rem; }
+.est .cta .ask { font-family: var(--head); font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.25rem; color: var(--ink); }
+.est .fitpanel { display: grid; gap: 12px; padding-top: 4px; }
+.est .fitpanel .phone { text-align: center; font-size: 0.95rem; color: var(--muted); }
+
+/* ---------- detail sections ---------- */
+.est .detail { margin-top: clamp(16px, 3vw, 32px); display: grid; gap: clamp(40px, 6vw, 60px); }
+.est .detail h2 { margin-top: 14px; font-size: clamp(1.5rem, 3.2vw, 2.1rem); }
+.est .fine { max-width: 70ch; font-size: 0.98rem; color: var(--body); }
+.est .fine b { color: var(--ink); }
+.est .cols { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 720px) { .est .cols { grid-template-columns: 1fr 1fr; } }
+.est .card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); padding: clamp(20px, 3vw, 28px); display: grid; gap: 12px; align-content: start; min-width: 0; }
+.est .card h3 { font-size: 1.25rem; }
+.est .card ul { margin: 0; padding: 0; list-style: none; display: grid; }
+.est .card li { position: relative; padding: 8px 0 8px 18px; border-bottom: 1px solid var(--line); font-size: 0.98rem; }
+.est .card li:last-child { border-bottom: 0; }
+.est .card li::before { content: ""; position: absolute; left: 0; top: 17px; width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
+.est .card.ex li::before { background: var(--muted); }
+.est .card li em { display: block; margin-top: 2px; font-size: 0.88rem; line-height: 1.4; color: var(--muted); }
+.est .phases { display: grid; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); padding: 4px clamp(14px, 3vw, 24px); }
+.est .phase { display: grid; grid-template-columns: 72px 1fr auto; gap: 14px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.est .phase:last-child { border-bottom: 0; }
+.est .phase .pct { font-family: var(--head); font-weight: 600; font-size: 1.7rem; font-variant-numeric: tabular-nums; color: var(--navy); white-space: nowrap; }
+.est .phase .pct small { margin-left: 3px; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.est .phase b { color: var(--ink); font-weight: 600; }
+.est .phase span { display: block; font-size: 0.95rem; color: var(--body); }
+.est .phase .when { font-size: 0.88rem; color: var(--muted); white-space: nowrap; }
+@media (max-width: 520px) { .est .phase { grid-template-columns: 60px 1fr; } .est .phase .when { grid-column: 2; } }
+.est .faq { margin-top: 18px; border-top: 1px solid var(--line); }
+.est .faq details { border-bottom: 1px solid var(--line); }
+.est .faq summary { display: grid; grid-template-columns: 1fr 24px; gap: 12px; align-items: center; padding: 16px 0; list-style: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.est .faq summary::-webkit-details-marker { display: none; }
+.est .faq summary h3 { font-size: 1.1rem; }
+.est .faq summary::after { content: "+"; font-family: var(--head); font-size: 1.7rem; line-height: 1; text-align: center; color: var(--orange); transition: transform .18s ease; }
+.est .faq details[open] summary::after { transform: rotate(45deg); }
+.est .faq details p { margin: 0 0 18px; }
+
+/* ---------- sticky bottom bar: live range while scrolling the questions ---------- */
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: rgba(255,255,255,0.96); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-top: 1px solid var(--line); box-shadow: 0 -6px 18px rgba(10,31,92,0.10); padding: 10px var(--gut) calc(10px + env(safe-area-inset-bottom, 0px)); transition: transform .22s ease, opacity .22s; }
+.bar.off { transform: translateY(110%); opacity: 0; pointer-events: none; }
+.bar .in { max-width: 760px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.bar .lbl { font-family: var(--head); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange-600); }
+.bar .amt { font-family: var(--head); font-weight: 600; font-size: clamp(1.05rem, 4.6vw, 1.5rem); line-height: 1.1; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--navy); }
+.bar .btn { flex: none; padding: 12px 18px; font-size: 0.92rem; }
+/* keep the footer's last line clear of the bar while it is showing */
+body:has(.bar:not(.off)) .footer .legal { padding-bottom: calc(34px + 76px + env(safe-area-inset-bottom, 0px)); }
+
+@media (prefers-reduced-motion: reduce) { .est *, .bar { transition: none !important; } }
 </style>
 </head>
 <body>
+
+
+<!-- ============ UTILITY BAR ============ -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-left">
+      <a class="tb-item" href="tel:+14077059128">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="tb-phone">(407) 705-9128</span>
+      </a>
+      <span class="tb-item hide-sm">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Mon–Fri · 9am–6pm
+      </span>
+      <span class="tb-item hide-sm">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Serving Orlando &amp; Central Florida
+      </span>
+    </div>
+    <div class="tb-right">
+      <span class="tb-co">A General Contractor &amp; Roofing Company</span>
+      <span class="tb-tag">Licensed: CRC1335188 &amp; CCC1336695 · Fully Insured</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="Herrera Contractors home">
+      <img class="brand-logo" src="images/logo-full.png" alt="Herrera Contractors" />
+    </a>
+    <nav class="menu" aria-label="Primary">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#why">Why Us</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#financing">Financing</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="nav-phone" href="tel:+14077059128">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (407) 705-9128
+      </a>
+      <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile drawer -->
+<div class="drawer" id="drawer">
+  <div class="scrim" data-close></div>
+  <div class="panel">
+    <button class="close" data-close aria-label="Close menu">&times;</button>
+    <a href="index.html#services" data-close>Services</a>
+    <a href="index.html#why" data-close>Why Us</a>
+    <a href="index.html#projects" data-close>Projects</a>
+    <a href="index.html#reviews" data-close>Reviews</a>
+    <a href="index.html#financing" data-close>Financing</a>
+    <a href="index.html#contact" data-close>Contact</a>
+    <a class="btn btn-primary" href="index.html#contact" data-close>Get a Free Consultation</a>
+  </div>
+</div>
+
+<!-- ============ ESTIMATOR ============ -->
+<main class="section est-page">
 <div class="wrap">
-<header class="hero">
+<div class="est">
+<header class="est-hero">
   <p class="eyebrow">Herrera Contractors · Home additions</p>
   <h1>How much will my home addition cost in Central Florida?</h1>
   <p>Tell us what you have in mind: the kind of addition, its size and what goes inside. In about a minute you will have a realistic investment range to plan from, and a clear next step if it fits your budget.</p>
@@ -356,7 +397,7 @@ section.detail{margin-top:36px;display:grid;gap:28px}
   <div class="cta" id="cta">
     <div class="finance">
       <p>Financing with $0 down is available for qualified homeowners.</p>
-      <a class="btn outline" href="/#financing">See financing options</a>
+      <a class="btn btn-ghost" href="/#financing">See financing options</a>
     </div>
     <p class="ask">Does this investment range fit your budget?</p>
     <div class="opts" id="fitOpts">
@@ -365,12 +406,12 @@ section.detail{margin-top:36px;display:grid;gap:28px}
     </div>
     <div class="fitpanel" id="fitYes" hidden>
       <p>Great. The next step is a site consultation at your home, where we confirm the scope and start the drawings.</p>
-      <a class="btn primary" href="/#contact">Schedule my site consultation</a>
+      <a class="btn btn-primary" href="/#contact">Schedule my site consultation</a>
       <p class="phone">Or call or text (407) 705-9128</p>
     </div>
     <div class="fitpanel" id="fitNo" hidden>
       <p>No problem. Many projects fit by adjusting the scope or building in phases. Let's talk it through on a free phone consultation.</p>
-      <a class="btn ghost" href="/#contact">Request a free phone consultation</a>
+      <a class="btn btn-navy" href="/#contact">Request a free phone consultation</a>
       <p class="phone">Or call or text (407) 705-9128</p>
     </div>
   </div>
@@ -455,14 +496,69 @@ section.detail{margin-top:36px;display:grid;gap:28px}
   <p class="fine">This calculator gives an investment range for planning, based on recent Herrera Contractors projects in Seminole and Orange County. It is not a quote: your final investment is set after a site visit, drawings and your selections. The tool itself was created by Herrera Contractors LLC and is protected by copyright; copying or reproducing any part of it without written permission is not allowed.<br>© 2026 Herrera Contractors LLC · CRC1335188 · CCC1336695 · Licensed &amp; insured · All rights reserved.</p>
 </section>
 </div>
+</div>
+</main>
+
 <div class="bar" id="bar">
   <div class="in">
     <div><div class="lbl">Investment range</div><div class="amt" id="barAmt"><span class="from">From </span><span id="barLow">$0</span><span class="dash"> – </span><span id="barHigh" class="hi">$0</span></div></div>
-    <a class="btn primary" href="#result">See details</a>
+    <a class="btn btn-primary" href="#result">See details</a>
   </div>
 </div>
 
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand footer-brand" href="index.html">
+          <img class="brand-logo-mark" src="images/logo-mark.png" alt="" />
+          <span class="bt"><b>Herrera</b><small style="color:rgba(255,255,255,0.6);">Contractors</small></span>
+        </a>
+        <p class="f-about">Family-owned construction, remodeling and roofing serving Orlando and Central Florida for over a decade. Built right, built to last.</p>
+        <div class="f-social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Google"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="index.html#services">Home Remodeling</a></li>
+          <li><a href="index.html#services">Roofing</a></li>
+          <li><a href="index.html#services">New Construction</a></li>
+          <li><a href="index.html#services">Kitchen &amp; Bath</a></li>
+          <li><a href="index.html#services">Residential Repairs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="index.html#why">Why Choose Us</a></li>
+          <li><a href="index.html#projects">Our Projects</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+          <li><a href="index.html#financing">Financing</a></li>
+          <li><a href="index.html#contact">Free Estimate</a></li>
+          <li><a href="/home-addition-cost-estimator.html">Addition Estimator</a></li>
+        </ul>
+      </div>
+      <div class="f-contact">
+        <h5>Get In Touch</h5>
+        <div><b>Call or Text</b><a href="tel:+14077059128" style="white-space:nowrap;">(407) 705-9128</a></div>
+        <div><b>Email</b><a href="mailto:info@hdesignconstruction.com">info@hdesignconstruction.com</a></div>
+        <div><b>Service Area</b>Orlando &amp; Central Florida</div>
+        <div><b>Hours</b>Mon–Fri · 9am–6pm</div>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Herrera Contractors. All rights reserved. · Contractor License CRC1335188 · Roofing License CCC1336695</span>
+      <span><a href="#">Privacy Policy</a> · <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
 
+<script src="app.js"></script>
 <script>
 /* =====================================================================
    PRICING CONFIG — edit these numbers, nothing else needs to change.

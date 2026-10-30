@@ -238,7 +238,7 @@ p { margin: 0; }
 .brand-logo-mark { height: 48px; width: auto; display: block; }
 @media (max-width: 480px){ .brand-logo { height: 42px; } }
 
-.menu { display: flex; align-items: center; gap: 4px; }
+.menu { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .menu a {
   font-family: var(--head);
   text-transform: uppercase;
@@ -913,13 +913,16 @@ section[id], .svc[id] { scroll-margin-top: 88px; }
 
 /* tap-to-call line above the form card */
 .hero-side { display: flex; flex-direction: column; min-width: 0; }
-.hero-call {
-  display: inline-flex; align-items: center; gap: 9px; align-self: center; margin-bottom: 14px;
+.hero-call { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.hero-call::before,
+.hero-call::after { content: ""; flex: 1; height: 1px; background: var(--line-on-navy); }
+.hero-call a {
+  display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--head); text-transform: uppercase; letter-spacing: 0.05em;
   font-weight: 600; font-size: 1.05rem; color: #fff; white-space: nowrap;
 }
-.hero-call svg { width: 17px; height: 17px; flex: none; color: var(--orange); }
-.hero-call:hover { color: var(--orange); }
+.hero-call svg { width: 15px; height: 15px; flex: none; color: var(--orange); }
+.hero-call a:hover { color: var(--orange); }
 
 @media (max-width: 920px){
   .hero-photo { aspect-ratio: 16 / 8; }
@@ -929,7 +932,7 @@ section[id], .svc[id] { scroll-margin-top: 88px; }
 @media (min-width: 921px){
   .hero .quote-card { margin-top: 61px; }
   /* the call line fills the 61px above the card, level with the location pill */
-  .hero-side .hero-call { align-self: flex-end; height: 39px; margin-bottom: 22px; }
+  .hero-side .hero-call { height: 39px; margin-bottom: 22px; }
   .hero .hero-side .quote-card { margin-top: 0; flex: 1; }
   .hero .wrap { align-items: stretch; }
   .hero-photo { flex: 1 1 0; aspect-ratio: auto; min-height: 240px; }

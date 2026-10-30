@@ -238,7 +238,7 @@ p { margin: 0; }
 .brand-logo-mark { height: 48px; width: auto; display: block; }
 @media (max-width: 480px){ .brand-logo { height: 42px; } }
 
-.menu { display: flex; align-items: center; gap: 4px; }
+.menu { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .menu a {
   font-family: var(--head);
   text-transform: uppercase;
@@ -256,13 +256,44 @@ p { margin: 0; }
 }
 .menu a:hover { color: var(--navy); }
 .menu a:hover::after { transform: scaleX(1); }
+.menu > a[aria-current="page"]:not(.nav-pill) { color: var(--navy); }
+.menu > a[aria-current="page"]:not(.nav-pill)::after { transform: scaleX(1); }
+
+/* services dropdown */
+.has-sub { position: relative; display: flex; align-items: center; }
+.has-sub > a { padding-right: 6px; }
+.has-sub > a::after { right: 6px; }
+.sub-toggle { display:flex; align-items:center; background:none; border:none; cursor:pointer; padding:8px 6px; margin-right:6px; border-radius:6px; color:var(--ink); }
+.sub-toggle svg { width:16px; height:16px; transition: transform .2s ease; }
+.sub-toggle:hover { color: var(--navy); }
+.has-sub.open .sub-toggle svg { transform: rotate(180deg); }
+.submenu {
+  position:absolute; top:100%; left:0; z-index:5; min-width:260px; margin:0; padding:8px; list-style:none;
+  background:var(--white); border:1px solid var(--line); border-radius:var(--r); box-shadow:var(--shadow-lg);
+  opacity:0; visibility:hidden; transform:translateY(6px); transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+}
+.has-sub.open .submenu { opacity:1; visibility:visible; transform:none; transition-delay:0s; }
+@media (hover: hover){
+  .has-sub:hover .submenu { opacity:1; visibility:visible; transform:none; transition-delay:0s; }
+}
+.menu .submenu a { display:block; padding:10px 14px; font-family:var(--sans); font-size:1rem; font-weight:600; text-transform:none; letter-spacing:0; }
+.menu .submenu a::after { content:none; }
+.menu .submenu a:hover, .menu .submenu a:focus-visible { background:var(--paper); color:var(--navy); }
+
+/* estimator pill */
+.menu .nav-pill { margin:0 6px; padding:6px 18px; border:2px solid var(--orange); border-radius:999px; color:var(--navy); font-weight:600; transition: background .18s ease, color .18s ease; }
+.menu .nav-pill::after { content:none; }
+.menu .nav-pill:hover, .menu .nav-pill[aria-current="page"] { background:var(--orange); color:var(--navy); }
+
+/* keep jump targets clear of the sticky header */
+section[id], .svc[id] { scroll-margin-top: 88px; }
 .nav-actions { display: flex; align-items: center; gap: 16px; }
 .nav-phone { display:flex; align-items:center; gap:9px; font-family:var(--head); font-weight:600; font-size:1.18rem; color:var(--navy); letter-spacing:0.02em; }
 .nav-phone svg { width:20px; height:20px; color: var(--orange); }
 .burger { display:none; background:none; border:none; cursor:pointer; padding:8px; }
 .burger span { display:block; width:26px; height:2.5px; background:var(--navy); margin:5px 0; border-radius:2px; transition:.2s; }
 
-@media (max-width: 1080px){
+@media (max-width: 1180px){
   .menu, .nav-phone { display: none; }
   .burger { display: block; }
 }
@@ -276,6 +307,18 @@ p { margin: 0; }
 .drawer.open .panel { transform:translateX(0); }
 .drawer .panel a { font-family:var(--head); text-transform:uppercase; letter-spacing:0.04em; font-size:1.1rem; color:var(--ink); padding:13px 4px; border-bottom:1px solid var(--line); }
 .drawer .panel .btn { margin-top:18px; }
+.drawer .panel { overflow-y:auto; overscroll-behavior:contain; }
+.drawer .panel a.sub { padding:9px 4px 9px 20px; font-family:var(--sans); font-size:1rem; font-weight:600; text-transform:none; letter-spacing:0; color:var(--body); }
+.drawer .panel-sub { display:flex; align-items:center; border-bottom:1px solid var(--line); }
+.drawer .panel-sub a { flex:1; border-bottom:none; }
+.drawer .panel-sub-toggle { display:flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; background:none; border:none; cursor:pointer; color:var(--ink); }
+.drawer .panel-sub-toggle svg { width:20px; height:20px; transition: transform .2s ease; }
+.drawer .panel-sub-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.drawer .panel-sublist { display:flex; flex-direction:column; }
+.drawer .panel-sublist[hidden] { display:none; }
+.drawer .panel .nav-pill { align-self:flex-start; margin:10px 0; padding:7px 22px; border:2px solid var(--orange); border-radius:999px; color:var(--navy); font-weight:600; }
+.drawer .panel .nav-pill:hover, .drawer .panel .nav-pill[aria-current="page"] { background:var(--orange); }
+.drawer .panel > a[aria-current="page"]:not(.nav-pill) { color:var(--navy); box-shadow: inset 3px 0 0 var(--orange); padding-left:12px; }
 .drawer .close { align-self:flex-end; background:none; border:none; font-size:2rem; line-height:1; color:var(--muted); cursor:pointer; margin-bottom:8px; }
 
 /* =========================================================
@@ -868,6 +911,19 @@ p { margin: 0; }
 .hero .quote-card .qc-fine { font-size: 0.92rem; }
 .hero .quote-card .qc-fine a:hover { color: var(--orange-600) !important; }
 
+/* tap-to-call line above the form card */
+.hero-side { display: flex; flex-direction: column; min-width: 0; }
+.hero-call { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.hero-call::before,
+.hero-call::after { content: ""; flex: 1; height: 1px; background: var(--line-on-navy); }
+.hero-call a {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--head); text-transform: uppercase; letter-spacing: 0.05em;
+  font-weight: 600; font-size: 1.05rem; color: #fff; white-space: nowrap;
+}
+.hero-call svg { width: 15px; height: 15px; flex: none; color: var(--orange); }
+.hero-call a:hover { color: var(--orange); }
+
 @media (max-width: 920px){
   .hero-photo { aspect-ratio: 16 / 8; }
 }
@@ -875,6 +931,9 @@ p { margin: 0; }
 /* desktop: align the form card top with the headline (not the pill above it) */
 @media (min-width: 921px){
   .hero .quote-card { margin-top: 61px; }
+  /* the call line fills the 61px above the card, level with the location pill */
+  .hero-side .hero-call { height: 39px; margin-bottom: 22px; }
+  .hero .hero-side .quote-card { margin-top: 0; flex: 1; }
   .hero .wrap { align-items: stretch; }
   .hero-photo { flex: 1 1 0; aspect-ratio: auto; min-height: 240px; }
 }@media (max-width: 480px){

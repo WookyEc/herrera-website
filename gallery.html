@@ -165,18 +165,25 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
       <img class="brand-logo" src="images/logo-full.png" alt="Herrera Contractors" />
     </a>
     <nav class="menu" aria-label="Primary">
-      <a href="index.html#services">Services</a>
-      <a href="index.html#why">Why Us</a>
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#reviews">Reviews</a>
-      <a href="index.html#financing">Financing</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="index.html">Home</a>
+      <div class="has-sub">
+        <a href="index.html#services">Services</a>
+        <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="sub-services" aria-label="Show services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="submenu" id="sub-services">
+          <li><a href="index.html#svc-kitchen">Kitchen Remodeling</a></li>
+          <li><a href="index.html#svc-bathroom">Bathroom Remodeling</a></li>
+          <li><a href="index.html#svc-whole-home">Whole-Home Remodeling</a></li>
+          <li><a href="index.html#svc-additions">Home Additions &amp; ADUs</a></li>
+          <li><a href="index.html#svc-new-construction">New Construction</a></li>
+          <li><a href="index.html#svc-roofing">Roofing</a></li>
+        </ul>
+      </div>
+      <a href="gallery.html" aria-current="page">Gallery</a>
+      <a href="index.html#projects">Project Stories</a>
+      <a class="nav-pill" href="home-addition-cost-estimator.html">Estimator</a>
+      <a href="index.html#why">About Us</a>
     </nav>
     <div class="nav-actions">
-      <a class="nav-phone" href="tel:+14077059128">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        (407) 705-9128
-      </a>
       <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -187,12 +194,23 @@ src="https://www.facebook.com/tr?id=1093644965972172&ev=PageView&noscript=1"
   <div class="scrim" data-close></div>
   <div class="panel">
     <button class="close" data-close aria-label="Close menu">&times;</button>
-    <a href="index.html#services" data-close>Services</a>
-    <a href="index.html#why" data-close>Why Us</a>
-    <a href="index.html#projects" data-close>Projects</a>
-    <a href="index.html#reviews" data-close>Reviews</a>
-    <a href="index.html#financing" data-close>Financing</a>
-    <a href="index.html#contact" data-close>Contact</a>
+    <a href="index.html" data-close>Home</a>
+    <div class="panel-sub">
+      <a href="index.html#services" data-close>Services</a>
+      <button class="panel-sub-toggle" type="button" aria-expanded="false" aria-controls="panel-services" aria-label="Show services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+    </div>
+    <div class="panel-sublist" id="panel-services" hidden>
+      <a class="sub" href="index.html#svc-kitchen" data-close>Kitchen Remodeling</a>
+      <a class="sub" href="index.html#svc-bathroom" data-close>Bathroom Remodeling</a>
+      <a class="sub" href="index.html#svc-whole-home" data-close>Whole-Home Remodeling</a>
+      <a class="sub" href="index.html#svc-additions" data-close>Home Additions &amp; ADUs</a>
+      <a class="sub" href="index.html#svc-new-construction" data-close>New Construction</a>
+      <a class="sub" href="index.html#svc-roofing" data-close>Roofing</a>
+    </div>
+    <a href="gallery.html" aria-current="page" data-close>Gallery</a>
+    <a href="index.html#projects" data-close>Project Stories</a>
+    <a class="nav-pill" href="home-addition-cost-estimator.html" data-close>Estimator</a>
+    <a href="index.html#why" data-close>About Us</a>
     <a class="btn btn-primary" href="index.html#contact" data-close>Get a Free Consultation</a>
   </div>
 </div>

@@ -1087,3 +1087,110 @@ section[id], .svc[id] { scroll-margin-top: 88px; }
   .ps-cta-actions { flex-direction: column; margin-top: 22px; }
   .ps-cta-actions .btn { width: 100%; white-space: normal; text-align: center; }
 }
+
+/* ---------------------------------------------------------
+   PROJECT STORIES — individual story pages (projects/*.html)
+   Caveat is loaded only on story pages (see their <head>).
+   --------------------------------------------------------- */
+.ps-story { --script: "Caveat", cursive; }
+.ps-script { font-family: var(--script); font-style: italic; font-weight: 600; text-transform: none; letter-spacing: 0; }
+
+/* short orange underline bar */
+.ps-bar { display: block; width: 110px; height: 5px; background: var(--orange); margin-top: 14px; }
+
+/* ---- intro band ---- */
+.ps-story-intro { padding: 28px 0 44px; }
+.ps-crumbs { font-size: 14px; color: rgba(255,255,255,0.7); }
+.ps-crumbs a { color: var(--orange); font-weight: 700; }
+.ps-crumbs a:hover { text-decoration: underline; }
+.ps-crumbs span[aria-hidden] { margin: 0 4px; }
+.ps-story-intro h1 { margin-top: 14px; max-width: 900px; }
+
+/* ---- overview (paper) ---- */
+.ps-overview { background: var(--paper); padding: 28px 0 48px; }
+
+/* facts strip: each item has its own dashed rules, only as wide as its text */
+.ps-strip { display: flex; flex-wrap: wrap; gap: 0 40px; margin: 0; }
+.ps-strip-item {
+  display: flex; align-items: baseline; gap: 20px;
+  padding: 14px 0; border-top: 1px dashed #c9c4ba; border-bottom: 1px dashed #c9c4ba;
+}
+.ps-strip dt { font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
+.ps-strip dd { margin: 0; font-size: 19px; color: var(--ink); }
+
+.ps-different { max-width: 820px; margin-top: 10px; padding-top: 28px; }
+.ps-different h2 { font-size: 34px; line-height: 1.1; color: var(--ink); }
+.ps-different p { margin-top: 20px; font-size: 19px; }
+
+/* photo grid: big After on the left, Before / During stacked on the right */
+.ps-photos {
+  display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr;
+  gap: 14px; margin-top: 8px; padding-top: 28px;
+}
+.ps-photo {
+  position: relative; border-radius: var(--r-lg); overflow: hidden;
+  background: #dfdbd2 center / cover no-repeat;
+  display: grid; place-items: center; min-height: 160px;
+}
+.ps-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ps-ph { display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--muted); font-size: 15px; font-weight: 600; }
+.ps-ph svg { width: 36px; height: 36px; }
+.ps-photo-after { grid-row: 1 / span 2; min-height: 440px; }
+
+/* "More photos" link, styled like a facts label */
+.ps-more {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
+  padding: 12px 0; border-top: 1px dashed #c9c4ba; border-bottom: 1px dashed #c9c4ba;
+  font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted);
+  transition: color .18s ease;
+}
+.ps-more svg { width: 14px; height: 14px; }
+.ps-more:hover { color: var(--orange-600); }
+
+/* ---- story + what's included (white band) ---- */
+.ps-story-band { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 56px 0; }
+.ps-story-band .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+.ps-story-band p { font-size: 17px; margin-top: 16px; }
+.ps-story-band .eyebrow + p { margin-top: 18px; }
+.eyebrow.ps-eyebrow-navy { color: var(--navy); }
+.eyebrow.ps-eyebrow-navy::before { background: var(--navy); }
+.ps-included { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 14px; }
+.ps-included li { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; color: var(--ink); line-height: 1.5; }
+.ps-check { flex: none; width: 26px; height: 26px; border-radius: 50%; background: #E3EAF8; color: var(--navy); display: grid; place-items: center; margin-top: -1px; }
+.ps-check svg { width: 14px; height: 14px; }
+
+/* ---- gallery ---- */
+.ps-gallery { background: var(--paper-2); padding: 56px 0 64px; scroll-margin-top: 90px; }
+.ps-gallery h2 { font-size: 44px; line-height: 1.05; color: var(--ink); }
+.ps-gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+.ps-gallery-grid .ps-photo { height: 260px; }
+
+@media (max-width: 760px) {
+  .ps-story-band .wrap { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 600px) {
+  .ps-story-intro { padding-bottom: 44px; }
+  .ps-story-intro h1 { font-size: 28px; }
+
+  .ps-strip {
+    display: grid; grid-template-columns: auto auto minmax(0, 1fr); grid-template-rows: auto auto;
+    grid-auto-flow: column; column-gap: 14px; row-gap: 4px;
+    padding: 12px 0; border-top: 1px dashed #c9c4ba; border-bottom: 1px dashed #c9c4ba;
+  }
+  .ps-strip-item { display: contents; }
+  .ps-strip dd { font-size: 17px; }
+  .ps-strip-item:not(:last-child) dd { white-space: nowrap; }
+
+  .ps-different h2 { font-size: 22px; white-space: nowrap; }
+  .ps-different .ps-bar { width: 90px; height: 4px; }
+  .ps-different p { font-size: 17px; }
+
+  .ps-photos { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+  .ps-photo-after { grid-column: 1 / span 2; grid-row: auto; min-height: 0; height: 240px; }
+  .ps-photo-before, .ps-photo-during { min-height: 0; height: 150px; }
+
+  .ps-gallery h2 { font-size: 36px; }
+  .ps-gallery-grid { grid-template-columns: 1fr 1fr; }
+  .ps-gallery-grid .ps-photo { height: 150px; min-height: 0; }
+}

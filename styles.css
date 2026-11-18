@@ -1194,3 +1194,203 @@ section[id], .svc[id] { scroll-margin-top: 88px; }
   .ps-gallery-grid { grid-template-columns: 1fr 1fr; }
   .ps-gallery-grid .ps-photo { height: 150px; min-height: 0; }
 }
+
+/* =========================================================
+   ABOUT US — about.html
+   All classes prefixed .ab- so nothing collides with other pages.
+   Reuses .eyebrow, .btn, .ps-bar and the .ps-cta band.
+   Caveat is loaded in about.html's <head>.
+   ========================================================= */
+.ab-page {
+  --ab-script: "Caveat", "Segoe Script", cursive;
+  --ab-label: #5d6379;   /* gray labels, passes 4.5:1 on white and paper */
+  --ab-kicker: #b96500;  /* orange text that passes 4.5:1 on light backgrounds */
+}
+.ab-hl { color: var(--orange); }
+.ab-page figure, .ab-page blockquote, .ab-page dl, .ab-page dd { margin: 0; }
+
+.ab-h2 { font-size: 34px; line-height: 1.1; color: var(--ink); }
+.ab-h3 { font-size: 22px; letter-spacing: 0.03em; color: #fff; }
+
+/* ---- hero (navy) ---- */
+.ab-hero { background: var(--navy); color: #fff; padding: 56px 0 64px; }
+.ab-hero-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); column-gap: 56px;
+  grid-template-rows: 1fr auto auto auto auto 1fr;
+  grid-template-areas: ". photo" "eyebrow photo" "title photo" "text photo" "btn photo" ". photo";
+}
+.ab-hero-eyebrow { grid-area: eyebrow; }
+.ab-hero-title { grid-area: title; margin-top: 20px; color: #fff; font-size: 58px; line-height: 1.05; }
+.ab-hero-text { grid-area: text; margin-top: 20px; max-width: 500px; font-size: 20px; color: rgba(255,255,255,0.86); }
+.ab-hero-btn { grid-area: btn; justify-self: start; margin-top: 26px; }
+.ab-hero-figure { grid-area: photo; align-self: center; }
+.ab-hero-img {
+  width: 100%; height: auto; aspect-ratio: 1380 / 1140;
+  object-fit: cover; object-position: 50% 40%; border-radius: var(--r-lg);
+}
+.ab-caption {
+  margin-top: 12px; text-align: right;
+  font-family: var(--ab-script); font-weight: 600; font-size: 26px; line-height: 1.1;
+  color: rgba(255,255,255,0.9);
+}
+
+/* ---- stats (white) ---- */
+.ab-stats { background: var(--white); border-bottom: 1px solid var(--line); }
+.ab-stats-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-top: 30px; padding-bottom: 30px; margin-block: 0; }
+.ab-stat { display: flex; align-items: center; gap: 14px; }
+.ab-stat + .ab-stat { border-left: 1px solid var(--line); padding-left: 24px; }
+.ab-stat-value {
+  order: -1; display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--head); font-weight: 600; font-size: 46px; line-height: 1; color: var(--navy);
+}
+.ab-star { width: 30px; height: 30px; color: var(--orange); }
+.ab-stat-label { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.35; color: var(--ab-label); }
+
+/* ---- our story + mission (paper) ---- */
+.ab-story { background: var(--paper); }
+.ab-story-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 56px; align-items: start; padding-top: 64px; padding-bottom: 64px; }
+.ab-story-text .ps-bar { margin-bottom: 4px; }
+.ab-story-text p { margin-top: 16px; font-size: 19px; }
+.ab-mission { background: var(--navy); color: #fff; border-radius: var(--r-lg); padding: 32px; }
+.ab-mission-text { margin-top: 14px; font-size: 21px; line-height: 1.45; color: #fff; }
+
+/* ---- how we work together (white) ---- */
+.ab-team { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 64px 0; }
+.ab-sub { margin-top: 16px; font-size: 19px; }
+.ab-team-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-top: 32px; }
+.ab-person { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; display: flex; flex-direction: column; }
+/* both photo areas share one 4:3 box so the cards match */
+/* overflow:hidden + min-height:0 stop the flex column from stretching the box
+   to the photo's natural height, so the 4:3 shape holds at every width */
+.ab-person-photo { flex: none; aspect-ratio: 4 / 3; overflow: hidden; min-height: 0; background: #dfdbd2; }
+.ab-person-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ab-photo-fabricio { object-position: 50% 28%; }
+.ab-photo-ana { object-position: 50% 22%; }
+.ab-person-body { padding: 28px; display: flex; flex-direction: column; gap: 10px; }
+.ab-kicker { font-family: var(--head); font-weight: 600; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ab-kicker); }
+.ab-name { font-size: 26px; line-height: 1.1; color: var(--ink); }
+.ab-role { font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ab-label); }
+.ab-person-text { margin-top: 6px; }
+
+.ab-pull { display: flex; align-items: stretch; gap: 20px; margin-top: 32px; padding: 22px 0; border-top: 1px dashed #c9c4ba; border-bottom: 1px dashed #c9c4ba; }
+.ab-pull-bar { flex: none; width: 5px; background: var(--orange); }
+.ab-pull p { font-size: 22px; line-height: 1.4; font-weight: 600; color: var(--ink); }
+
+/* ---- next generation + away from the job site (paper-2) ---- */
+.ab-family { background: var(--paper-2); }
+.ab-family-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; padding-top: 64px; padding-bottom: 64px; }
+.ab-script {
+  font-family: var(--ab-script); font-style: italic; font-weight: 600;
+  text-transform: none; letter-spacing: 0; font-size: 44px; line-height: 1.1; color: var(--ink);
+}
+.ab-family-item .ps-bar { margin-top: 12px; }
+.ab-family-item p { margin-top: 14px; font-size: 19px; }
+
+/* ---- own-home rule + Herrera Standard (navy) ---- */
+.ab-standard { background: var(--navy); color: #fff; padding: 72px 0; }
+.ab-rule { max-width: 980px; }
+.ab-rule-text {
+  margin-top: 16px; font-family: var(--head); font-weight: 500; text-transform: uppercase;
+  font-size: 42px; line-height: 1.15; color: #fff;
+}
+.ab-standard-grid {
+  display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 56px;
+  margin-top: 48px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.18);
+}
+.ab-standard-col p { margin-top: 12px; color: rgba(255,255,255,0.86); }
+.ab-checks { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; color: rgba(255,255,255,0.9); }
+.ab-checks li { display: flex; align-items: center; gap: 10px; }
+.ab-checks svg { flex: none; width: 16px; height: 16px; color: var(--orange); }
+
+/* ---- reviews (paper) ---- */
+.ab-reviews { background: var(--paper); padding: 64px 0; }
+.ab-review-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 28px; }
+.ab-review {
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: 24px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 1px 3px rgba(17,25,58,0.06);
+}
+.ab-review-stars { width: 96px; height: 18px; color: var(--orange); }
+.ab-review blockquote { flex: 1 1 auto; font-size: 16px; }
+.ab-review figcaption { font-weight: 700; color: var(--ink); }
+
+/* ---- why homeowners choose us (white) ---- */
+.ab-why { background: var(--white); border-top: 1px solid var(--line); padding: 64px 0; }
+.ab-why-grid { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 40px; }
+.ab-why-item { display: flex; flex-direction: column; gap: 8px; padding-top: 16px; border-top: 1px dashed #c9c4ba; }
+.ab-why-num { font-family: var(--head); font-weight: 600; font-size: 30px; line-height: 1; color: var(--ab-kicker); }
+.ab-why-item h3 { font-size: 19px; letter-spacing: 0.03em; color: var(--ink); }
+.ab-why-item p { margin-top: 8px; font-size: 16px; }
+
+/* separate the footer from the navy CTA band (same as Project Stories) */
+.ab-page ~ .footer { border-top: 1px solid rgba(255,255,255,0.14); }
+
+/* ---- tablet ---- */
+@media (max-width: 980px) {
+  .ab-review-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ab-why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ab-hero-title { font-size: 46px; }
+}
+@media (max-width: 860px) {
+  .ab-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }
+  .ab-stat + .ab-stat { border-left: none; padding-left: 0; }
+  .ab-story-grid, .ab-standard-grid, .ab-family-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- phone ---- */
+@media (max-width: 760px) {
+  /* hero: eyebrow, title, photo, caption, text, button */
+  .ab-hero { padding: 28px 0 32px; }
+  .ab-hero-grid { display: flex; flex-direction: column; align-items: stretch; gap: 16px; }
+  .ab-hero-eyebrow { align-self: flex-start; }
+  .ab-hero-title { margin-top: 0; font-size: 34px; line-height: 1.08; }
+  .ab-caption { margin-top: 10px; font-size: 22px; }
+  .ab-hero-text { margin-top: 0; font-size: 17px; }
+  .ab-hero-btn { margin-top: 0; width: 100%; white-space: normal; text-align: center; }
+
+  .ab-stats-grid { padding-top: 22px; padding-bottom: 22px; }
+  .ab-stat { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .ab-stat-value { font-size: 36px; gap: 5px; }
+  .ab-star { width: 24px; height: 24px; }
+  .ab-stat-label { font-size: 11.5px; }
+  .ab-br { display: none; }
+
+  .ab-h2 { font-size: 24px; }
+  .ab-story-grid { gap: 24px; padding-top: 36px; padding-bottom: 36px; }
+  .ab-story-text p { margin-top: 14px; font-size: 17px; }
+  .ab-mission { padding: 24px; }
+  .ab-mission-text { margin-top: 12px; font-size: 18px; }
+
+  .ab-team { padding: 36px 0; }
+  .ab-sub { margin-top: 14px; font-size: 17px; }
+  .ab-team-grid { grid-template-columns: 1fr; gap: 22px; margin-top: 22px; }
+  .ab-person-body { padding: 22px; gap: 8px; }
+  .ab-kicker { font-size: 12px; }
+  .ab-name { font-size: 22px; }
+  .ab-role { font-size: 12.5px; }
+  .ab-person-text { margin-top: 4px; }
+  .ab-pull { gap: 14px; margin-top: 22px; padding: 18px 0; }
+  .ab-pull p { font-size: 18px; }
+
+  .ab-family-grid { gap: 30px; padding-top: 36px; padding-bottom: 36px; }
+  .ab-script { font-size: 36px; }
+  .ab-family-item p { margin-top: 12px; font-size: 17px; }
+
+  .ab-standard { padding: 44px 0; }
+  .ab-rule-text { margin-top: 14px; font-size: 26px; line-height: 1.2; }
+  .ab-standard-grid { gap: 30px; margin-top: 30px; padding-top: 26px; }
+  .ab-h3 { font-size: 19px; }
+  .ab-standard-col p { margin-top: 10px; }
+  .ab-checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px; font-size: 15px; margin-top: 10px; }
+
+  .ab-reviews { padding: 36px 0; }
+  .ab-review-grid { grid-template-columns: 1fr; margin-top: 20px; }
+  .ab-review { padding: 20px; gap: 10px; }
+  .ab-review blockquote { font-size: 15px; }
+
+  .ab-why { padding: 36px 0; }
+  .ab-why-grid { grid-template-columns: 1fr; gap: 18px; margin-top: 20px; }
+  .ab-why-item { flex-direction: row; align-items: flex-start; gap: 14px; padding-top: 14px; }
+  .ab-why-num { flex: none; width: 36px; font-size: 24px; line-height: 1.1; }
+  .ab-why-item h3 { font-size: 17px; }
+  .ab-why-item p { margin-top: 4px; }
+}

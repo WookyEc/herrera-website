@@ -1207,7 +1207,7 @@ section[id], .svc[id] { scroll-margin-top: 88px; }
   --ab-kicker: #b96500;  /* orange text that passes 4.5:1 on light backgrounds */
 }
 .ab-hl { color: var(--orange); }
-.ab-page figure, .ab-page blockquote, .ab-page dl, .ab-page dd { margin: 0; }
+.ab-page figure, .ab-page blockquote, .ab-page dd { margin: 0; }
 
 .ab-h2 { font-size: 34px; line-height: 1.1; color: var(--ink); }
 .ab-h3 { font-size: 22px; letter-spacing: 0.03em; color: #fff; }

@@ -383,26 +383,6 @@ section[id], .svc[id] { scroll-margin-top: 88px; }
 /* =========================================================
    TRUST STRIP
    ========================================================= */
-/* trust band: same look as the About Us stats bar (.ab-stats) */
-.trust { background: var(--white); border-bottom:1px solid var(--line); }
-.trust .wrap { display:grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap:0; padding-top:30px; padding-bottom:30px; }
-.trust .ti { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:0 16px; text-align:center; }
-.trust .ti + .ti { border-left:1px solid var(--line); }
-.trust .ti .ic { display:none; }
-.trust .ti b { display:block; font-family:var(--head); font-weight:600; text-transform:uppercase; font-size:26px; line-height:1.1; color:var(--navy); }
-.trust .ti span { font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; line-height:1.35; color:#5d6379; }
-@media (max-width: 980px){
-  .trust .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); gap:20px 16px; }
-  .trust .ti + .ti { border-left:none; }
-  .trust .ti:last-child { grid-column: 1 / -1; }
-}
-@media (max-width: 760px){
-  .trust .wrap { padding-top:22px; padding-bottom:22px; }
-  .trust .ti { align-items:flex-start; justify-content:flex-start; gap:4px; padding:0; text-align:left; }
-  .trust .ti b { font-size:22px; }
-  .trust .ti span { font-size:11.5px; }
-}
-
 /* =========================================================
    SECTION HEADERS
    ========================================================= */
@@ -1244,17 +1224,17 @@ section[id], .svc[id] { scroll-margin-top: 88px; }
   color: rgba(255,255,255,0.9);
 }
 
-/* ---- stats (white) ---- */
+/* ---- stats (white) — also used on the homepage (index.html) ---- */
 .ab-stats { background: var(--white); border-bottom: 1px solid var(--line); }
 .ab-stats-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; padding-top: 30px; padding-bottom: 30px; margin-block: 0; }
 .ab-stat { display: flex; align-items: center; justify-content: center; gap: 14px; }
 .ab-stat + .ab-stat { border-left: 1px solid var(--line); }
 .ab-stat-value {
-  order: -1; display: inline-flex; align-items: center; gap: 6px;
+  order: -1; margin: 0; display: inline-flex; align-items: center; gap: 6px;
   font-family: var(--head); font-weight: 600; font-size: 46px; line-height: 1; color: var(--navy);
 }
 .ab-star { width: 30px; height: 30px; color: var(--orange); }
-.ab-stat-label { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.35; color: var(--ab-label); }
+.ab-stat-label { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.35; color: #5d6379; }
 
 /* ---- our story + mission (paper) ---- */
 .ab-story { background: var(--paper); }

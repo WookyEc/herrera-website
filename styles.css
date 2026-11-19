@@ -383,16 +383,25 @@ section[id], .svc[id] { scroll-margin-top: 88px; }
 /* =========================================================
    TRUST STRIP
    ========================================================= */
+/* trust band: same look as the About Us stats bar (.ab-stats) */
 .trust { background: var(--white); border-bottom:1px solid var(--line); }
-.trust .wrap { display:grid; grid-template-columns: repeat(5,1fr); gap:0; }
-.trust .ti { display:flex; align-items:center; gap:14px; padding:26px 24px; border-right:1px solid var(--line); }
-.trust .ti:last-child { border-right:none; }
-.trust .ti .ic { width:42px; height:42px; flex:none; border-radius:9px; background:var(--orange-100); color:var(--orange-600); display:grid; place-items:center; }
-.trust .ti .ic svg { width:22px; height:22px; }
-.trust .ti b { display:block; font-family:var(--head); text-transform:uppercase; font-size:1.05rem; color:var(--ink); line-height:1.1; }
-.trust .ti span { font-size:0.84rem; color:var(--muted); }
-@media (max-width: 980px){ .trust .wrap { grid-template-columns: repeat(2,1fr); } .trust .ti:nth-child(odd){border-right:1px solid var(--line);} .trust .ti{border-bottom:1px solid var(--line);} }
-@media (max-width: 560px){ .trust .wrap { grid-template-columns:1fr; } .trust .ti{border-right:none !important;} }
+.trust .wrap { display:grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap:0; padding-top:30px; padding-bottom:30px; }
+.trust .ti { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:0 16px; text-align:center; }
+.trust .ti + .ti { border-left:1px solid var(--line); }
+.trust .ti .ic { display:none; }
+.trust .ti b { display:block; font-family:var(--head); font-weight:600; text-transform:uppercase; font-size:26px; line-height:1.1; color:var(--navy); }
+.trust .ti span { font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; line-height:1.35; color:#5d6379; }
+@media (max-width: 980px){
+  .trust .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); gap:20px 16px; }
+  .trust .ti + .ti { border-left:none; }
+  .trust .ti:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 760px){
+  .trust .wrap { padding-top:22px; padding-bottom:22px; }
+  .trust .ti { align-items:flex-start; justify-content:flex-start; gap:4px; padding:0; text-align:left; }
+  .trust .ti b { font-size:22px; }
+  .trust .ti span { font-size:11.5px; }
+}
 
 /* =========================================================
    SECTION HEADERS
